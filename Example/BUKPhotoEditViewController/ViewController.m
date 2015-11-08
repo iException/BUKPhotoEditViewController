@@ -19,11 +19,6 @@
     [super viewDidLoad];
     
     BUKPhotoEditViewController *photoEditViewController = [[BUKPhotoEditViewController alloc] initWithPhoto:[UIImage imageNamed:@"sample_landscape"]];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
     [self.navigationController pushViewController:photoEditViewController animated:YES];
     // Do any additional setup after loading the view, typically from a nib.
 }
