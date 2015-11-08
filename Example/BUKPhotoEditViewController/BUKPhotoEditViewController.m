@@ -98,6 +98,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
             nextOrientation = UIImageOrientationUp;
             break;
         default:
+            nextOrientation = UIImageOrientationUp;
             break;
     }
     
