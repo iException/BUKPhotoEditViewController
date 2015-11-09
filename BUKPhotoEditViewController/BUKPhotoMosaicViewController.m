@@ -37,7 +37,7 @@ static const CGFloat kButtonBaseWidth = 40.0f;
 static const CGFloat kPortraitPhotoPadding = 200.0f;
 static const CGFloat kLabelBaseWidth = 60.0f;
 static const CGFloat kDefaultFontSize = 14.0f;
-static const CGFloat kStrokeButtonBasedWidth = 7.0f;
+static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 
 #pragma mark - initializer -
 
@@ -224,6 +224,7 @@ static const CGFloat kStrokeButtonBasedWidth = 7.0f;
         [_strokeSmallButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
         [_strokeSmallButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
         _strokeSmallButton.tag = LCStrokeScaleSmall;
+        _strokeSmallButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         _strokeSmallButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeSmallButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -237,6 +238,7 @@ static const CGFloat kStrokeButtonBasedWidth = 7.0f;
         [_strokeMediumButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeMediumButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
         [_strokeMediumButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
+        _strokeMediumButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         _strokeMediumButton.tag = LCStrokeScaleMedium;
         _strokeMediumButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeMediumButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -251,6 +253,7 @@ static const CGFloat kStrokeButtonBasedWidth = 7.0f;
         [_strokeLargeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeLargeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
         [_strokeLargeButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
+        _strokeLargeButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         _strokeLargeButton.tag = LCStrokeScaleLarge;
         _strokeLargeButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeLargeButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];

@@ -259,7 +259,7 @@ static const CGFloat kTopBarHeight = 68.0f;
     
     self.horizontalClipView.frame = CGRectMake(0, 0, screenSize.width, 3 * screenSize.width / 4);
     self.horizontalClipView.center = [self imageCenter];
-    self.verticalClipView.frame = CGRectMake(0, 0, screenSize.width, 5 * screenSize.width / 4);
+    self.verticalClipView.frame = CGRectMake(0, 0, screenSize.width * 4 / 5, screenSize.width);
     self.verticalClipView.center = [self imageCenter];
     
     self.verticalClipView.hidden = YES;
