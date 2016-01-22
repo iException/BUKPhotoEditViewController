@@ -7,7 +7,9 @@
 //
 
 #import "BUKPhotoFilterView.h"
+#import "BUKPhotoFilter.h"
 #import "UIColor+hex.h"
+#import "UIImage+Crop.h"
 #import <CoreImage/CoreImage.h>
 
 @interface BUKPhotoFilterView ()
@@ -40,6 +42,7 @@ const static CGFloat kImageToLabelVerticalHeight = 9.0f;
 {
     [self addSubview:self.imageView];
     [self addSubview:self.namelabel];
+    self.imageView.contentMode = UIViewContentModeScaleToFill;
 
     self.imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - kLabelHeight - kImageToLabelVerticalHeight);
     self.namelabel.frame = CGRectMake(0, self.imageView.frame.size.height + kImageToLabelVerticalHeight, self.frame.size.width, kLabelHeight);
@@ -49,26 +52,20 @@ const static CGFloat kImageToLabelVerticalHeight = 9.0f;
 
 - (void)generateFilterView
 {
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        CIImage *ciImage = [[CIImage alloc] initWithImage:self.image];
-        CIContext *context = [CIContext contextWithOptions:kNilOptions];
-        
-        [self.filter setDefaults];
-        [self.filter setValue:ciImage forKey:kCIInputImageKey];
-        
-        UIImage *image = [UIImage imageWithCGImage:[context createCGImage:self.filter.outputImage fromRect:[ciImage extent]]];
-        if (image) {
-            self.image = image;
-        }
+        __typeof__(self) strongSelf = weakSelf;
+        UIImage *resizeImage = [strongSelf.image imageCroppedToSize:strongSelf.imageView.frame.size];
+        UIImage *filterImage = [BUKPhotoFilter filterImageWithImage:resizeImage filter:strongSelf.filter];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.imageView.image = self.image;
+            strongSelf.imageView.image = (filterImage) ? filterImage : resizeImage;
         });
     });
 }
 
 - (UIImage *)filteredImage
 {
-    return self.image;
+    return (self.filter) ? [BUKPhotoFilter filterImageWithImage:self.image filter:self.filter] : self.image;
 }
 
 #pragma mark - getter -

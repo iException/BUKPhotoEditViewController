@@ -49,7 +49,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         [self layoutFrame];
         
         self.lastSelectedButton = self.strokeMediumButton;
-        [self.lastSelectedButton setImage:[UIImage imageNamed:@"photo_mosaic_strokefill"] forState:UIControlStateNormal];
+        [self.lastSelectedButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         self.photoView.strokeScale = self.lastSelectedButton.tag;
     }
     return self;
@@ -100,8 +100,8 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     if ([self.lastSelectedButton isEqual:button]) {
         return;
     } else {
-        [button setImage:[UIImage imageNamed:@"photo_mosaic_strokefill"] forState:UIControlStateNormal];
-        [self.lastSelectedButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"qingquan_mosaic_fill"] forState:UIControlStateNormal];
+        [self.lastSelectedButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         self.lastSelectedButton = button;
     }
 }
@@ -198,7 +198,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 {
     if (!_redoButton) {
         _redoButton = [[UIButton alloc] init];
-        [_redoButton setImage:[UIImage imageNamed:@"photo_mosaic_redo"] forState:UIControlStateNormal];
+        [_redoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_redo"] forState:UIControlStateNormal];
         _redoButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_redoButton addTarget:self action:@selector(redo:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -209,7 +209,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 {
     if (!_undoButton) {
         _undoButton = [[UIButton alloc] init];
-        [_undoButton setImage:[UIImage imageNamed:@"photo_mosaic_undo"] forState:UIControlStateNormal];
+        [_undoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_undo"] forState:UIControlStateNormal];
         _undoButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_undoButton addTarget:self action:@selector(undo:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -222,9 +222,9 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _strokeSmallButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeSmallButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeSmallButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeSmallButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
+        [_strokeSmallButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         _strokeSmallButton.tag = LCStrokeScaleSmall;
-        _strokeSmallButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        _strokeSmallButton.contentEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15);
         _strokeSmallButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeSmallButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -237,8 +237,8 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _strokeMediumButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeMediumButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeMediumButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeMediumButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
-        _strokeMediumButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        [_strokeMediumButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        _strokeMediumButton.contentEdgeInsets = UIEdgeInsetsMake(18, 18, 18, 18);
         _strokeMediumButton.tag = LCStrokeScaleMedium;
         _strokeMediumButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeMediumButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -252,8 +252,8 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _strokeLargeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeLargeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeLargeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeLargeButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
-        _strokeLargeButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        [_strokeLargeButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        _strokeLargeButton.contentEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20);
         _strokeLargeButton.tag = LCStrokeScaleLarge;
         _strokeLargeButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeLargeButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
