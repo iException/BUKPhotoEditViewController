@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6330CCD51C52144E005FD450 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6330CCD41C52144E005FD450 /* 2.png */; };
+		6330CCD81C5215AC005FD450 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6330CCD71C5215AC005FD450 /* UIColor+Theme.m */; };
 		6339E1061C473BBC001AA9E5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6339E1051C473BBC001AA9E5 /* CoreImage.framework */; };
 		6339E1101C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */; };
 		6339E1131C474DDA001AA9E5 /* BUKPhotoFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */; };
@@ -24,14 +26,12 @@
 		63DEFBD91BEF04640089746C /* BUKPhotoMosaicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD21BEF04640089746C /* BUKPhotoMosaicViewController.m */; };
 		63DEFBDA1BEF04640089746C /* LCMosaicImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD41BEF04640089746C /* LCMosaicImageView.m */; };
 		63DEFBDB1BEF04640089746C /* UIColor+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD61BEF04640089746C /* UIColor+hex.m */; };
-		63DEFBE11BEF04E70089746C /* sample_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBDC1BEF04E70089746C /* sample_landscape.png */; };
-		63DEFBE21BEF04E70089746C /* sample_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBDD1BEF04E70089746C /* sample_portrait.png */; };
-		63DEFBE31BEF04E70089746C /* sample2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBDE1BEF04E70089746C /* sample2.png */; };
-		63DEFBE41BEF04E70089746C /* sample3.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBDF1BEF04E70089746C /* sample3.png */; };
-		63DEFBE51BEF04E70089746C /* star19.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBE01BEF04E70089746C /* star19.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6330CCD41C52144E005FD450 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		6330CCD61C5215AC005FD450 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
+		6330CCD71C5215AC005FD450 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
 		6339E1051C473BBC001AA9E5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6339E10E1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFiltersScrollView.h; sourceTree = "<group>"; };
 		6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFiltersScrollView.m; sourceTree = "<group>"; };
@@ -62,11 +62,6 @@
 		63DEFBD41BEF04640089746C /* LCMosaicImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCMosaicImageView.m; sourceTree = "<group>"; };
 		63DEFBD51BEF04640089746C /* UIColor+hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hex.h"; sourceTree = "<group>"; };
 		63DEFBD61BEF04640089746C /* UIColor+hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hex.m"; sourceTree = "<group>"; };
-		63DEFBDC1BEF04E70089746C /* sample_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_landscape.png; sourceTree = "<group>"; };
-		63DEFBDD1BEF04E70089746C /* sample_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_portrait.png; sourceTree = "<group>"; };
-		63DEFBDE1BEF04E70089746C /* sample2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample2.png; sourceTree = "<group>"; };
-		63DEFBDF1BEF04E70089746C /* sample3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample3.png; sourceTree = "<group>"; };
-		63DEFBE01BEF04E70089746C /* star19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star19.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +116,8 @@
 				638EBED71C520DB5001DAC6E /* UIImage+Crop.m */,
 				63DEFBD51BEF04640089746C /* UIColor+hex.h */,
 				63DEFBD61BEF04640089746C /* UIColor+hex.m */,
+				6330CCD61C5215AC005FD450 /* UIColor+Theme.h */,
+				6330CCD71C5215AC005FD450 /* UIColor+Theme.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -161,13 +158,9 @@
 		63DEFBB51BEF04250089746C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6330CCD41C52144E005FD450 /* 2.png */,
 				638EBECD1C52094C001DAC6E /* 11.jpg */,
 				6339E1051C473BBC001AA9E5 /* CoreImage.framework */,
-				63DEFBDC1BEF04E70089746C /* sample_landscape.png */,
-				63DEFBDD1BEF04E70089746C /* sample_portrait.png */,
-				63DEFBDE1BEF04E70089746C /* sample2.png */,
-				63DEFBDF1BEF04E70089746C /* sample3.png */,
-				63DEFBE01BEF04E70089746C /* star19.png */,
 				63DEFBB61BEF04250089746C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -244,14 +237,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DEFBC51BEF04250089746C /* LaunchScreen.storyboard in Resources */,
-				63DEFBE51BEF04E70089746C /* star19.png in Resources */,
-				63DEFBE21BEF04E70089746C /* sample_portrait.png in Resources */,
-				63DEFBE41BEF04E70089746C /* sample3.png in Resources */,
-				63DEFBE31BEF04E70089746C /* sample2.png in Resources */,
 				63DEFBC21BEF04250089746C /* Assets.xcassets in Resources */,
+				6330CCD51C52144E005FD450 /* 2.png in Resources */,
 				638EBECE1C52094C001DAC6E /* 11.jpg in Resources */,
 				63DEFBC01BEF04250089746C /* Main.storyboard in Resources */,
-				63DEFBE11BEF04E70089746C /* sample_landscape.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +254,7 @@
 				63DEFBD91BEF04640089746C /* BUKPhotoMosaicViewController.m in Sources */,
 				638EBED51C520A23001DAC6E /* BUKPhotoFilter.m in Sources */,
 				6339E1101C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m in Sources */,
+				6330CCD81C5215AC005FD450 /* UIColor+Theme.m in Sources */,
 				63DEFBBD1BEF04250089746C /* ViewController.m in Sources */,
 				63DEFBBA1BEF04250089746C /* AppDelegate.m in Sources */,
 				6339E1131C474DDA001AA9E5 /* BUKPhotoFilterView.m in Sources */,

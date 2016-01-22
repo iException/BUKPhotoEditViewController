@@ -11,6 +11,7 @@
 #import "BUKPhotoMosaicViewController.h"
 #import "BUKPhotoFiltersScrollView.h"
 #import "BUKPhotoFilterView.h"
+#import "UIColor+Theme.h"
 
 #define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width/414.0
 
@@ -24,11 +25,14 @@
 @property (nonatomic, strong) UIButton *mosaicButton;
 @property (nonatomic, strong) UIButton *clipButton;
 @property (nonatomic, strong) UIButton *doneButton;
+@property (nonatomic, strong) UIButton *cancelButton;
 
 @property (nonatomic, strong) UILabel *rotateLabel;
 @property (nonatomic, strong) UILabel *mosaicLabel;
 @property (nonatomic, strong) UILabel *clipLabel;
 @property (nonatomic, strong) UILabel *coverLabel;
+
+@property (nonatomic, strong) UIView *bottomMaskView;
 
 @property (nonatomic, strong) BUKPhotoFiltersScrollView *filtersScrollView;
 
@@ -40,7 +44,8 @@ static const CGFloat kLabelToBottomPadding = 42.0f;
 static const CGFloat kButtonToBottomPadding = 100.0f;
 
 static const CGFloat kDoneButtonHeight = 47.0f;
-static const CGFloat kFilterScrollViewHeight = 122.0f;
+static const CGFloat kBottomButtonLeftPadding = 43.0f;
+static const CGFloat kFilterScrollViewHeight = 118.0f;
 static const CGFloat kButtonBaseWidth = 40.0f;
 static const CGFloat kLabelBaseWidth = 60.0f;
 static const CGFloat kDefaultFontSize = 14.0f;
@@ -228,11 +233,13 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     
     [self.photoView addObserver:self forKeyPath:kPhotoViewObserverPath options:NSKeyValueObservingOptionNew context:nil];
     
+    [self.view addSubview:self.bottomMaskView];
     [self.view addSubview:self.photoView];
     [self.view addSubview:self.rotateButton];
     [self.view addSubview:self.mosaicButton];
     [self.view addSubview:self.clipButton];
     [self.view addSubview:self.doneButton];
+    [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.rotateLabel];
     [self.view addSubview:self.mosaicLabel];
     [self.view addSubview:self.clipLabel];
@@ -251,17 +258,19 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     
+    self.bottomMaskView.frame = CGRectMake(0, screenSize.height - kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.width, kBottomButtonLeftPadding);
+    
     self.rotateButton.frame = CGRectMake(screenSize.width / kButtonNumberFactor - (kButtonBaseWidth ) / 2 * SCREEN_FACTOR, screenSize.height - ((kButtonBaseWidth ) / 2 + kButtonToBottomPadding) * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR);
     self.mosaicButton.frame = CGRectMake(3 * screenSize.width / kButtonNumberFactor - (kButtonBaseWidth ) / 2 * SCREEN_FACTOR, screenSize.height - ((kButtonBaseWidth ) / 2 + kButtonToBottomPadding) * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR);
     self.clipButton.frame = CGRectMake(5 * screenSize.width / kButtonNumberFactor - (kButtonBaseWidth ) / 2 * SCREEN_FACTOR, screenSize.height - ((kButtonBaseWidth ) / 2 + kButtonToBottomPadding) * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR);
-    self.doneButton.frame = CGRectMake(0, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, screenSize.width, kDoneButtonHeight * SCREEN_FACTOR);
-    self.doneButton.contentEdgeInsets = UIEdgeInsetsMake(9, 100, 13, 100);
+    self.cancelButton.frame = CGRectMake(kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
+    self.doneButton.frame = CGRectMake(screenSize.width - (kBottomButtonLeftPadding + kDoneButtonHeight) * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
     
     self.rotateLabel.frame = CGRectMake(screenSize.width / kButtonNumberFactor - kLabelBaseWidth / 2 * SCREEN_FACTOR, screenSize.height - (kLabelBaseWidth / 2 + kLabelToBottomPadding) * SCREEN_FACTOR, kLabelBaseWidth * SCREEN_FACTOR, 30 * SCREEN_FACTOR);
     self.mosaicLabel.frame = CGRectMake(3 * screenSize.width / kButtonNumberFactor - kLabelBaseWidth / 2 * SCREEN_FACTOR, screenSize.height - (kLabelBaseWidth / 2 + kLabelToBottomPadding) * SCREEN_FACTOR, kLabelBaseWidth * SCREEN_FACTOR, 30 * SCREEN_FACTOR);
     self.clipLabel.frame = CGRectMake(5 * screenSize.width / kButtonNumberFactor - kLabelBaseWidth / 2 * SCREEN_FACTOR, screenSize.height - (kLabelBaseWidth / 2 + kLabelToBottomPadding) * SCREEN_FACTOR, kLabelBaseWidth * SCREEN_FACTOR, 30 * SCREEN_FACTOR);
     
-    self.filtersScrollView.frame = CGRectMake(0, self.rotateButton.frame.origin.y - kFilterScrollViewHeight * SCREEN_FACTOR, screenSize.width, kFilterScrollViewHeight * SCREEN_FACTOR);
+    self.filtersScrollView.frame = CGRectMake(0, self.rotateButton.frame.origin.y - kFilterScrollViewHeight * SCREEN_FACTOR - 10, screenSize.width, kFilterScrollViewHeight * SCREEN_FACTOR);
 }
 
 - (void)resetFrame
@@ -331,6 +340,16 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     return _doneButton;
 }
 
+- (UIButton *)cancelButton {
+    if(_cancelButton == nil) {
+        _cancelButton = [[UIButton alloc] init];
+        [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
+        _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cancelButton;
+}
+
 - (UILabel *)rotateLabel
 {
     if (!_rotateLabel) {
@@ -389,8 +408,17 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
         _filtersScrollView = [[BUKPhotoFiltersScrollView alloc] init];
         _filtersScrollView.filtersDelegate = self;
         _filtersScrollView.dataSource = self;
+        _filtersScrollView.backgroundColor = [UIColor pev_darkGrayColor];
     }
     return _filtersScrollView;
+}
+
+- (UIView *)bottomMaskView {
+	if(_bottomMaskView == nil) {
+		_bottomMaskView = [[UIView alloc] init];
+        _bottomMaskView.backgroundColor = [UIColor pev_darkGrayColor];
+	}
+	return _bottomMaskView;
 }
 
 @end
