@@ -14,8 +14,6 @@
 
 - (void)photoEditViewController:(BUKPhotoEditViewController *)controller didFinishEditingPhoto:(UIImage *)photo;
 - (void)photoEditViewControllerDidCancelEditingPhoto:(BUKPhotoEditViewController *)controller;
-- (void)photoEditViewController:(BUKPhotoEditViewController *)controller didSetCoverWithPhoto:(UIImage *)photo;
-- (void)photoEditViewControllerDidDeletePhoto:(BUKPhotoEditViewController *)controller;
 
 @end
 
