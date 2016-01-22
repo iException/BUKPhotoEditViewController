@@ -7,7 +7,7 @@
 //
 
 #import "BUKPhotoClipViewController.h"
-#import "UIColor+hex.h"
+#import "UIColor+Theme.h"
 
 @interface BUKPhotoClipViewController (){
     CGPoint initialPosition;
@@ -18,34 +18,26 @@
 
 @property (nonatomic, strong) UIImageView *photoView;
 
-@property (nonatomic, strong) UIImageView *horizontalClipView;
-@property (nonatomic, strong) UIImageView *verticalClipView;
-
-@property (nonatomic, strong) UIButton *landscapeButton;
-@property (nonatomic, strong) UIButton *portraitButton;
-
-@property (nonatomic, strong) UILabel *landscapeLabel;
-@property (nonatomic, strong) UILabel *portraitLabel;
-
+@property (nonatomic, strong) UIImageView *clipView;
 @property (nonatomic, strong) UIView *maskView;
+
+@property (nonatomic, strong) UIButton *confirmButton;
+@property (nonatomic, strong) UIButton *cancelButton;
 
 @property (nonatomic, strong) CAShapeLayer *blackLayer;
 @property (nonatomic, strong) CAShapeLayer *transparentLayer;
-
-@property (nonatomic, assign) BOOL isVerticalMode;
 
 @end
 
 @implementation BUKPhotoClipViewController
 
-static const CGFloat kButtonToBottomPadding = 83.0f;
-static const CGFloat kLabelToBottomPadding = 25.0f;
-static const CGFloat kButtonBaseWidth = 40.0f;
-static const CGFloat kLabelBaseWidth = 60.0f;
-static const CGFloat kDefaultFontSize = 14.0f;
 static const CGFloat kImagePinchMaxScale = 3.0f;
 static const CGFloat kImagePinchMinScale = 1.0f;
-static const CGFloat kTopBarHeight = 68.0f;
+static const CGFloat kImageBottom = 92.0f;
+
+static const CGFloat KButtonToLeft = 37.0f;
+static const CGFloat kButtonToBottom = 28.0f;
+static const CGFloat kButtonWidth = 24.0f;
 
 #pragma mark - initializer -
 
@@ -75,36 +67,6 @@ static const CGFloat kTopBarHeight = 68.0f;
 
 #pragma mark - event response -
 
-- (void)landscapeRotate:(id)sender
-{
-    self.horizontalClipView.hidden = NO;
-    self.verticalClipView.hidden = YES;
-    self.isVerticalMode = NO;
-    
-    [self makeTransparentLayer];
-    
-    CGPoint newOriginPoint = [self originForCurrentPhotoView];
-    
-    [UIView animateWithDuration:0.2f animations:^{
-        self.photoView.frame = CGRectMake(newOriginPoint.x, newOriginPoint.y, self.photoView.frame.size.width, self.photoView.frame.size.height);
-    }];
-}
-
-- (void)portraitRotate:(id)sender
-{
-    self.horizontalClipView.hidden = YES;
-    self.verticalClipView.hidden = NO;
-    self.isVerticalMode = YES;
-    
-    [self makeTransparentLayer];
-    
-    CGPoint newOriginPoint = [self originForCurrentPhotoView];
-    
-    [UIView animateWithDuration:0.2f animations:^{
-        self.photoView.frame = CGRectMake(newOriginPoint.x, newOriginPoint.y, self.photoView.frame.size.width, self.photoView.frame.size.height);
-    }];
-}
-
 - (void)cancel:(id)sender
 {
     [self.delegate photoClipViewControllerDidCancelEditingPhoto:self];
@@ -112,9 +74,6 @@ static const CGFloat kTopBarHeight = 68.0f;
 
 - (void)confirm:(id)sender
 {
-    self.horizontalClipView.hidden = YES;
-    self.verticalClipView.hidden = YES;
-    
     UIImage *image = [self clipPhoto];
     self.photoView.transform = CGAffineTransformIdentity;
     
@@ -215,32 +174,23 @@ static const CGFloat kTopBarHeight = 68.0f;
     self.view.backgroundColor = [UIColor blackColor];
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
-    leftBarButtonItem.tintColor = [UIColor colorWithHex:@"FF4465"];
+    leftBarButtonItem.tintColor = [UIColor themeColor];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
-    rightBarButtonItem.tintColor = [UIColor colorWithHex:@"FF4465"];
+    rightBarButtonItem.tintColor = [UIColor themeColor];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     
     self.photoView.image = photo;
     
     [self.view addSubview:self.photoView];
-    [self.view addSubview:self.horizontalClipView];
-    [self.view addSubview:self.verticalClipView];
+    [self.view addSubview:self.clipView];
     [self.view addSubview:self.maskView];
-    [self.view addSubview:self.landscapeButton];
-    [self.view addSubview:self.portraitButton];
-    [self.view addSubview:self.landscapeLabel];
-    [self.view addSubview:self.portraitLabel];
+    [self.view addSubview:self.confirmButton];
+    [self.view addSubview:self.cancelButton];
 
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    if (photo.size.width >= photo.size.height) {
-        CGFloat ratio = (photo.size.height / photo.size.width);
-        CGFloat height = (ratio > 0.75f) ? 0.75f * screenSize.width : ratio * screenSize.width;
-        self.photoView.frame = CGRectMake(0, 0, screenSize.width, height);
-    } else {
-        CGFloat ratio = (photo.size.height / photo.size.width);
-        self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width * ratio);
-    }
+    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kImageBottom);
+
     self.photoView.clipsToBounds = YES;
     self.photoView.center = [self imageCenter];
     
@@ -249,31 +199,15 @@ static const CGFloat kTopBarHeight = 68.0f;
 - (void)layoutFrame
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
     
-    self.landscapeButton.frame = CGRectMake(screenSize.width / 4.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
-    self.portraitButton.frame = CGRectMake(3 * screenSize.width / 4.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
+    self.clipView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width);
+    self.clipView.center = [self imageCenter];
+    self.maskView.frame = CGRectMake(0, screenSize.height - kImageBottom, screenSize.width, kImageBottom);
     
-    self.landscapeLabel.frame = CGRectMake(screenSize.width / 4.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
-    self.portraitLabel.frame = CGRectMake(3 * screenSize.width / 4.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
-    
-    self.horizontalClipView.frame = CGRectMake(0, 0, screenSize.width, 3 * screenSize.width / 4);
-    self.horizontalClipView.center = [self imageCenter];
-    self.verticalClipView.frame = CGRectMake(0, 0, screenSize.width * 4 / 5, screenSize.width);
-    self.verticalClipView.center = [self imageCenter];
-    
-    self.verticalClipView.hidden = YES;
-    self.isVerticalMode = NO;
+    self.confirmButton.frame = CGRectMake(screenSize.width - KButtonToLeft - kButtonWidth, screenSize.height - kButtonToBottom - kButtonWidth, kButtonWidth, kButtonWidth);
+    self.cancelButton.frame = CGRectMake(KButtonToLeft, screenSize.height - kButtonToBottom - kButtonWidth, kButtonWidth, kButtonWidth);
     
     [self makeTransparentLayer];
-    
-    self.maskView.frame = CGRectMake(0, self.portraitButton.frame.origin.y + 10, screenSize.width, screenSize.height - self.portraitButton.frame.origin.y - 10);
-
-    if (self.verticalClipView.frame.origin.y < kTopBarHeight) {
-        CGFloat verticalHeight = self.maskView.frame.origin.y - kTopBarHeight;
-        self.verticalClipView.frame = CGRectMake(0, 0, 4 * verticalHeight / 5, verticalHeight);
-    }
-    self.verticalClipView.center = [self imageCenter];
 }
 
 - (CGPoint)originForCurrentPhotoView
@@ -312,8 +246,7 @@ static const CGFloat kTopBarHeight = 68.0f;
 - (CGPoint)imageCenter
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGFloat y = screenSize.height / 2 - ((kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding + kTopBarHeight + 20) / 2;
+    CGFloat y = (64 + screenSize.height - kImageBottom) / 2;
     return CGPointMake(screenSize.width / 2, y);
 }
 
@@ -326,8 +259,8 @@ static const CGFloat kTopBarHeight = 68.0f;
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     
     // Both frames are defined in the same coordinate system
-    CGRect biggerRect = CGRectMake(0, 0, screenSize.width, screenSize.height - kButtonToBottomPadding - kButtonBaseWidth / 2);
-    CGRect smallerRect = (self.isVerticalMode) ? self.verticalClipView.frame : self.horizontalClipView.frame;
+    CGRect biggerRect = CGRectMake(0, 0, screenSize.width, screenSize.height - kImageBottom);
+    CGRect smallerRect = self.clipView.frame;
     currentMaskRect = smallerRect;
     
     UIBezierPath *maskPath = [UIBezierPath bezierPath];
@@ -351,12 +284,7 @@ static const CGFloat kTopBarHeight = 68.0f;
     self.blackLayer = maskWithHole;
     [self.view.layer addSublayer:self.blackLayer];
     
-    UIBezierPath *path;
-    if (self.isVerticalMode) {
-        path = [UIBezierPath bezierPathWithRect:self.verticalClipView.frame];
-    } else {
-        path = [UIBezierPath bezierPathWithRect:self.horizontalClipView.frame];
-    }
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.clipView.frame];
     [path setUsesEvenOddFillRule:YES];
     
     CAShapeLayer *fillLayer = [CAShapeLayer layer];
@@ -385,72 +313,6 @@ static const CGFloat kTopBarHeight = 68.0f;
     return _photoView;
 }
 
-- (UIImageView *)horizontalClipView
-{
-    if (!_horizontalClipView) {
-        _horizontalClipView = [[UIImageView alloc] init];
-        _horizontalClipView.image = [UIImage imageNamed:@"photo_clip_hframe"];
-    }
-    return _horizontalClipView;
-}
-
-- (UIImageView *)verticalClipView
-{
-    if (!_verticalClipView) {
-        _verticalClipView = [[UIImageView alloc] init];
-        _verticalClipView.image = [UIImage imageNamed:@"photo_clip_vframe"];
-    }
-    return _verticalClipView;
-}
-
-- (UIButton *)landscapeButton
-{
-    if (!_landscapeButton) {
-        _landscapeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_landscapeButton setImage:[UIImage imageNamed:@"photo_clip_horizontal"] forState:UIControlStateNormal];
-        _landscapeButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [_landscapeButton addTarget:self action:@selector(landscapeRotate:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _landscapeButton;
-}
-
-- (UIButton *)portraitButton
-{
-    if (!_portraitButton) {
-        _portraitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_portraitButton setImage:[UIImage imageNamed:@"photo_clip_vertical"] forState:UIControlStateNormal];
-        _portraitButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [_portraitButton addTarget:self action:@selector(portraitRotate:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _portraitButton;
-}
-
-- (UILabel *)landscapeLabel
-{
-    if (!_landscapeLabel) {
-        _landscapeLabel = [[UILabel alloc] init];
-        _landscapeLabel.text = @"横屏";
-        _landscapeLabel.textColor = [UIColor whiteColor];
-        _landscapeLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
-        _landscapeLabel.textAlignment = NSTextAlignmentCenter;
-        _landscapeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    }
-    return _landscapeLabel;
-}
-
-- (UILabel *)portraitLabel
-{
-    if (!_portraitLabel) {
-        _portraitLabel = [[UILabel alloc] init];
-        _portraitLabel.text = @"竖屏";
-        _portraitLabel.textColor = [UIColor whiteColor];
-        _portraitLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
-        _portraitLabel.textAlignment = NSTextAlignmentCenter;
-        _portraitLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    }
-    return _portraitLabel;
-}
-
 - (UIView *)maskView
 {
     if (!_maskView) {
@@ -461,6 +323,34 @@ static const CGFloat kTopBarHeight = 68.0f;
         _maskView.opaque = NO;
     }
     return _maskView;
+}
+
+- (UIImageView *)clipView {
+	if(_clipView == nil) {
+		_clipView = [[UIImageView alloc] init];
+        _clipView.image = [UIImage imageNamed:@"qingquan_clip_bound"];
+	}
+	return _clipView;
+}
+
+- (UIButton *)confirmButton {
+    if(_confirmButton == nil) {
+        _confirmButton = [[UIButton alloc] init];
+        [_confirmButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
+        _confirmButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _confirmButton;
+}
+
+- (UIButton *)cancelButton {
+    if(_cancelButton == nil) {
+        _cancelButton = [[UIButton alloc] init];
+        [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
+        _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cancelButton;
 }
 
 @end
