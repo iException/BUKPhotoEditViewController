@@ -69,11 +69,14 @@ static const CGFloat kButtonWidth = 24.0f;
 
 - (void)cancel:(id)sender
 {
+    self.photoView.hidden = YES;
+    self.clipView.hidden = YES;
     [self.delegate photoClipViewControllerDidCancelEditingPhoto:self];
 }
 
 - (void)confirm:(id)sender
 {
+    self.clipView.hidden = YES;
     UIImage *image = [self clipPhoto];
     self.photoView.transform = CGAffineTransformIdentity;
     
@@ -172,13 +175,6 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     self.navigationItem.title = @"裁剪";
     self.view.backgroundColor = [UIColor blackColor];
-    
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
-    leftBarButtonItem.tintColor = [UIColor themeColor];
-    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
-    rightBarButtonItem.tintColor = [UIColor themeColor];
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     
     self.photoView.image = photo;
     

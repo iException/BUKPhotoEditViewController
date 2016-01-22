@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) LCMosaicImageView *photoView;
 @property (nonatomic, strong) UIImage *lastMosaicImage;
+@property (nonatomic, strong) UIImage *photo;
 
 @property (nonatomic, strong) UIButton *undoButton;
 @property (nonatomic, strong) UIButton *redoButton;
@@ -39,6 +40,7 @@
 
 @implementation BUKPhotoMosaicViewController
 
+static const CGFloat kButtonOriginToBottom = 172.0f;
 static const CGFloat kButtonToBottomPadding = 112.0f;
 static const CGFloat kLabelToBottomPadding = 55.0f;
 static const CGFloat kButtonBaseWidth = 40.0f;
@@ -54,6 +56,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 {
     self = [super init];
     if (self) {
+        _photo = photo;
         [self setupViewsWithPhoto:photo];
         [self layoutFrame];
         
@@ -181,7 +184,16 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     self.undoLabel.frame = CGRectMake(5 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
     self.redoLabel.frame = CGRectMake(7 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
     
-    self.photoView.frame = CGRectMake(0, 0, screenSize.width,self.strokeLargeButton.frame.origin.y - 64 - 50);
+    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR - 64);
+    
+    CGFloat heightByWidth = (self.photo.size.height / self.photo.size.width);
+    CGFloat height = screenSize.width * heightByWidth;
+    if (height > self.photoView.frame.size.height) {
+        self.photoView.frame = CGRectMake(0, 0, self.photoView.frame.size.height * (self.photo.size.width / self.photo.size.height), self.photoView.frame.size.height);
+    } else {
+        self.photoView.frame = CGRectMake(0, 0, screenSize.width, self.photoView.frame.size.height * heightByWidth);
+    }
+    
     self.photoView.clipsToBounds = YES;
     self.photoView.center = [self imageCenter];
 }
@@ -189,8 +201,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 - (CGPoint)imageCenter
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGFloat y = screenSize.height / 2 - ((kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding + 96) / 2;
+    CGFloat y = (screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR + 64) / 2;
     return CGPointMake(screenSize.width / 2, y);
 }
 
