@@ -17,6 +17,7 @@
 }
 
 @property (nonatomic, strong) UIImageView *photoView;
+@property (nonatomic, strong) UIImage *photo;
 
 @property (nonatomic, strong) UIImageView *clipView;
 @property (nonatomic, strong) UIView *maskView;
@@ -45,6 +46,7 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     self = [super init];
     if (self) {
+        _photo = photo;
         [self setupViewsWithPhoto:photo];
         [self layoutFrame];
     }
@@ -185,11 +187,17 @@ static const CGFloat kButtonWidth = 24.0f;
     [self.view addSubview:self.cancelButton];
 
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kImageBottom);
-
+    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kImageBottom - 64);
+    CGFloat heightByWidth = (self.photo.size.height / self.photo.size.width);
+    CGFloat height = screenSize.width * heightByWidth;
+    if (height > self.photoView.frame.size.height) {
+        self.photoView.frame = CGRectMake(0, 0, self.photoView.frame.size.height * (self.photo.size.width / self.photo.size.height), self.photoView.frame.size.height);
+    } else {
+        self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width * heightByWidth);
+    }
+    
     self.photoView.clipsToBounds = YES;
     self.photoView.center = [self imageCenter];
-    
 }
 
 - (void)layoutFrame
@@ -300,7 +308,6 @@ static const CGFloat kButtonWidth = 24.0f;
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
         _photoView.userInteractionEnabled = YES;
-        _photoView.contentMode = UIViewContentModeScaleAspectFill;
         UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         [_photoView addGestureRecognizer:pinch];
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
