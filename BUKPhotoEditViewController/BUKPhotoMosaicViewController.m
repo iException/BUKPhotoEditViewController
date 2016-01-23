@@ -9,17 +9,26 @@
 #import "BUKPhotoMosaicViewController.h"
 #import "LCMosaicImageView.h"
 #import "UIColor+hex.h"
+#import "UIColor+Theme.h"
+
+#define InsetSquare(padding) UIEdgeInsetsMake(padding, padding, padding, padding)
+#define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width/414.0
 
 @interface BUKPhotoMosaicViewController () <LCMosaicImageViewDelegate>
 
 @property (nonatomic, strong) LCMosaicImageView *photoView;
 @property (nonatomic, strong) UIImage *lastMosaicImage;
+@property (nonatomic, strong) UIImage *photo;
 
 @property (nonatomic, strong) UIButton *undoButton;
 @property (nonatomic, strong) UIButton *redoButton;
 @property (nonatomic, strong) UIButton *strokeSmallButton;
 @property (nonatomic, strong) UIButton *strokeMediumButton;
 @property (nonatomic, strong) UIButton *strokeLargeButton;
+
+@property (nonatomic, strong) UIButton *confirmButton;
+@property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) UIView *bottomMaskView;
 
 @property (nonatomic, strong) UILabel *strokeLabel;
 @property (nonatomic, strong) UILabel *undoLabel;
@@ -31,10 +40,12 @@
 
 @implementation BUKPhotoMosaicViewController
 
-static const CGFloat kButtonToBottomPadding = 83.0f;
-static const CGFloat kLabelToBottomPadding = 25.0f;
+static const CGFloat kButtonOriginToBottom = 172.0f;
+static const CGFloat kButtonToBottomPadding = 112.0f;
+static const CGFloat kLabelToBottomPadding = 55.0f;
 static const CGFloat kButtonBaseWidth = 40.0f;
-static const CGFloat kPortraitPhotoPadding = 200.0f;
+static const CGFloat kBottomButtonLeftPadding = 43.0f;
+static const CGFloat kDoneButtonHeight = 47.0f;
 static const CGFloat kLabelBaseWidth = 60.0f;
 static const CGFloat kDefaultFontSize = 14.0f;
 static const CGFloat kStrokeButtonBasedWidth = 18.0f;
@@ -45,11 +56,12 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 {
     self = [super init];
     if (self) {
+        _photo = photo;
         [self setupViewsWithPhoto:photo];
         [self layoutFrame];
         
         self.lastSelectedButton = self.strokeMediumButton;
-        [self.lastSelectedButton setImage:[UIImage imageNamed:@"photo_mosaic_strokefill"] forState:UIControlStateNormal];
+        [self.lastSelectedButton setImage:[UIImage imageNamed:@"qingquan_mosaic_fill"] forState:UIControlStateNormal];
         self.photoView.strokeScale = self.lastSelectedButton.tag;
     }
     return self;
@@ -100,8 +112,8 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     if ([self.lastSelectedButton isEqual:button]) {
         return;
     } else {
-        [button setImage:[UIImage imageNamed:@"photo_mosaic_strokefill"] forState:UIControlStateNormal];
-        [self.lastSelectedButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"qingquan_mosaic_fill"] forState:UIControlStateNormal];
+        [self.lastSelectedButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         self.lastSelectedButton = button;
     }
 }
@@ -130,15 +142,11 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     self.navigationItem.title = @"马赛克";
     self.view.backgroundColor = [UIColor blackColor];
     
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
-    leftBarButtonItem.tintColor = [UIColor colorWithHex:@"FF4465"];
-    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
-    rightBarButtonItem.tintColor = [UIColor colorWithHex:@"FF4465"];
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-    
+    [self.view addSubview:self.bottomMaskView];
     [self.view addSubview:self.undoButton];
     [self.view addSubview:self.redoButton];
+    [self.view addSubview:self.confirmButton];
+    [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.strokeSmallButton];
     [self.view addSubview:self.strokeMediumButton];
     [self.view addSubview:self.strokeLargeButton];
@@ -154,18 +162,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     self.photoView.backgroundColor = [UIColor clearColor];
 
     [self.view addSubview:self.photoView];
-    
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    if (photo.size.width >= photo.size.height) {
-        CGFloat ratio = (photo.size.height / photo.size.width);
-        NSInteger height = (ratio > 0.75f) ? 0.75f * screenSize.width : ratio * screenSize.width;
-        self.photoView.frame = CGRectMake(0, 0, screenSize.width, (double)height);
-    } else {
-        NSInteger width = (photo.size.width / photo.size.height) * (screenSize.height - kPortraitPhotoPadding);
-        self.photoView.frame = CGRectMake(0, 0, (double)width, screenSize.height - kPortraitPhotoPadding);
-    }
-    self.photoView.clipsToBounds = YES;
-    self.photoView.center = [self imageCenter];
 }
 
 - (void)layoutFrame
@@ -173,22 +169,39 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat scale = [UIScreen mainScreen].scale;
     
+    self.bottomMaskView.frame = CGRectMake(0, screenSize.height - kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.width, kBottomButtonLeftPadding);
+    
     self.strokeSmallButton.frame = CGRectMake(screenSize.width / 8.0f - (kStrokeButtonBasedWidth * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * scale, kStrokeButtonBasedWidth * scale);
     self.strokeMediumButton.frame = CGRectMake(2 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.25 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.25 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.25 * scale, kStrokeButtonBasedWidth * 1.25 * scale);
     self.strokeLargeButton.frame = CGRectMake(3 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.5 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.5 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.5 * scale, kStrokeButtonBasedWidth * 1.5 * scale);
+    
     self.undoButton.frame = CGRectMake(5 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
     self.redoButton.frame = CGRectMake(7 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
+    self.cancelButton.frame = CGRectMake(kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
+    self.confirmButton.frame = CGRectMake(screenSize.width - (kBottomButtonLeftPadding + kDoneButtonHeight) * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
     
     self.strokeLabel.frame = CGRectMake(2 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
     self.undoLabel.frame = CGRectMake(5 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
     self.redoLabel.frame = CGRectMake(7 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
+    
+    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR - 64);
+    
+    CGFloat heightByWidth = (self.photo.size.height / self.photo.size.width);
+    CGFloat height = screenSize.width * heightByWidth;
+    if (height > self.photoView.frame.size.height) {
+        self.photoView.frame = CGRectMake(0, 0, self.photoView.frame.size.height * (self.photo.size.width / self.photo.size.height), self.photoView.frame.size.height);
+    } else {
+        self.photoView.frame = CGRectMake(0, 0, screenSize.width, self.photoView.frame.size.height * heightByWidth);
+    }
+    
+    self.photoView.clipsToBounds = YES;
+    self.photoView.center = [self imageCenter];
 }
 
 - (CGPoint)imageCenter
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGFloat y = screenSize.height / 2 - ((kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding + 66) / 2;
+    CGFloat y = (screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR + 64) / 2;
     return CGPointMake(screenSize.width / 2, y);
 }
 
@@ -198,7 +211,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 {
     if (!_redoButton) {
         _redoButton = [[UIButton alloc] init];
-        [_redoButton setImage:[UIImage imageNamed:@"photo_mosaic_redo"] forState:UIControlStateNormal];
+        [_redoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_redo"] forState:UIControlStateNormal];
         _redoButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_redoButton addTarget:self action:@selector(redo:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -209,7 +222,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 {
     if (!_undoButton) {
         _undoButton = [[UIButton alloc] init];
-        [_undoButton setImage:[UIImage imageNamed:@"photo_mosaic_undo"] forState:UIControlStateNormal];
+        [_undoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_undo"] forState:UIControlStateNormal];
         _undoButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_undoButton addTarget:self action:@selector(undo:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -222,9 +235,9 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _strokeSmallButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeSmallButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeSmallButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeSmallButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
+        [_strokeSmallButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         _strokeSmallButton.tag = LCStrokeScaleSmall;
-        _strokeSmallButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        _strokeSmallButton.contentEdgeInsets = InsetSquare(10);
         _strokeSmallButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeSmallButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -237,8 +250,8 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _strokeMediumButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeMediumButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeMediumButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeMediumButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
-        _strokeMediumButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        [_strokeMediumButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        _strokeMediumButton.contentEdgeInsets = InsetSquare(10);
         _strokeMediumButton.tag = LCStrokeScaleMedium;
         _strokeMediumButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeMediumButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -252,8 +265,8 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _strokeLargeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeLargeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeLargeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeLargeButton setImage:[UIImage imageNamed:@"photo_mosaic_strokeempty"] forState:UIControlStateNormal];
-        _strokeLargeButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        [_strokeLargeButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        _strokeLargeButton.contentEdgeInsets = InsetSquare(10);
         _strokeLargeButton.tag = LCStrokeScaleLarge;
         _strokeLargeButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeLargeButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -300,5 +313,33 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     return _redoLabel;
 }
 
+
+- (UIButton *)confirmButton {
+	if(_confirmButton == nil) {
+		_confirmButton = [[UIButton alloc] init];
+        [_confirmButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
+        _confirmButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	return _confirmButton;
+}
+
+- (UIButton *)cancelButton {
+	if(_cancelButton == nil) {
+		_cancelButton = [[UIButton alloc] init];
+        [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
+        _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	return _cancelButton;
+}
+
+- (UIView *)bottomMaskView {
+	if(_bottomMaskView == nil) {
+        _bottomMaskView = [[UIView alloc] init];
+        _bottomMaskView.backgroundColor = [UIColor pev_darkGrayColor];
+	}
+	return _bottomMaskView;
+}
 
 @end

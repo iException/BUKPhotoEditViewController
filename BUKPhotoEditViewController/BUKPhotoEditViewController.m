@@ -9,8 +9,13 @@
 #import "BUKPhotoEditViewController.h"
 #import "BUKPhotoClipViewController.h"
 #import "BUKPhotoMosaicViewController.h"
+#import "BUKPhotoFiltersScrollView.h"
+#import "BUKPhotoFilterView.h"
+#import "UIColor+Theme.h"
 
-@interface BUKPhotoEditViewController () <BUKPhotoClipViewControllerDelegate, BUKPhotoMosaicViewControllerDelegate, UIAlertViewDelegate>
+#define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width/414.0
+
+@interface BUKPhotoEditViewController () <BUKPhotoClipViewControllerDelegate, BUKPhotoMosaicViewControllerDelegate, UIAlertViewDelegate, BUKPhotoFiltersDelegate, BUKPhotoFiltersDataSource>
 
 @property (nonatomic, strong) UIImageView *photoView;
 
@@ -19,23 +24,32 @@
 @property (nonatomic, strong) UIButton *rotateButton;
 @property (nonatomic, strong) UIButton *mosaicButton;
 @property (nonatomic, strong) UIButton *clipButton;
-@property (nonatomic, strong) UIButton *coverButton;
+@property (nonatomic, strong) UIButton *doneButton;
+@property (nonatomic, strong) UIButton *cancelButton;
 
 @property (nonatomic, strong) UILabel *rotateLabel;
 @property (nonatomic, strong) UILabel *mosaicLabel;
 @property (nonatomic, strong) UILabel *clipLabel;
 @property (nonatomic, strong) UILabel *coverLabel;
 
+@property (nonatomic, strong) UIView *bottomMaskView;
+
+@property (nonatomic, strong) BUKPhotoFiltersScrollView *filtersScrollView;
+
 @end
 
 @implementation BUKPhotoEditViewController
 
-static const CGFloat kButtonToBottomPadding = 83.0f;
-static const CGFloat kLabelToBottomPadding = 25.0f;
+static const CGFloat kLabelToBottomPadding = 42.0f;
+static const CGFloat kButtonToBottomPadding = 100.0f;
+
+static const CGFloat kDoneButtonHeight = 47.0f;
+static const CGFloat kBottomButtonLeftPadding = 43.0f;
+static const CGFloat kFilterScrollViewHeight = 118.0f;
 static const CGFloat kButtonBaseWidth = 40.0f;
-static const CGFloat kPortraitPhotoPadding = 200.0f;
 static const CGFloat kLabelBaseWidth = 60.0f;
 static const CGFloat kDefaultFontSize = 14.0f;
+static const CGFloat kButtonNumberFactor = 6.0f;
 static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 
 #pragma mark - initializer -
@@ -55,6 +69,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     [super viewDidLoad];
 
+    [self layoutFrame];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -65,7 +80,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
      @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    [self layoutFrame];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,17 +145,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [self.delegate photoEditViewControllerDidCancelEditingPhoto:self];
 }
 
-- (void)cover:(id)sender
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"要设为封面吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    [alert show];
-}
-
-- (void)delete:(id)sender
-{
-    [self.delegate photoEditViewControllerDidDeletePhoto:self];
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
     if ([keyPath isEqualToString:kPhotoViewObserverPath]) {
@@ -179,13 +182,43 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [controller.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - UIAlertViewDelegate -
+#pragma mark - BUKPhotoFilterDataSource & Delegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (NSInteger)buk_numberOfFiltersInPhotoFiltersScrollView:(BUKPhotoFiltersScrollView *)photoFiltersScrollView
 {
-    if (buttonIndex == 1) {
-        [self.delegate photoEditViewController:self didSetCoverWithPhoto:self.photoView.image];
+    return 5;
+}
+
+- (BUKPhotoFilterView *)buk_photoFiltersScrollView:(BUKPhotoFiltersScrollView *)photoFiltersScrollView filterViewAtIndex:(NSInteger)index
+{
+    NSString *name;
+    CIFilter *filter;
+    
+    if (index == 0) {
+        name = @"无";
+        filter = nil;
+    } else if (index == 1) {
+        name = @"不知道";
+        filter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
+    } else if (index == 2) {
+        name = @"哈哈";
+        filter = [CIFilter filterWithName:@"CIPhotoEffectChrome"];
+    } else if (index == 3) {
+        name = @"乐空空";
+        filter = [CIFilter filterWithName:@"CIPhotoEffectProcess"];
+    } else if (index == 4) {
+        name = @"666";
+        filter = [CIFilter filterWithName:@"CIPhotoEffectFade"];
     }
+    
+    BUKPhotoFilterView *filterView = [[BUKPhotoFilterView alloc] initWithPhoto:self.photoView.image name:name filter:filter];
+    return filterView;
+}
+
+- (void)buk_photoFiltersScrollView:(BUKPhotoFiltersScrollView *)photoFiltersScrollView didSelectPhotoFilterAtIndex:(NSInteger)index
+{
+    UIImage *filteredImage = [photoFiltersScrollView filteredImageAtIndex:index];
+    self.photoView.image = filteredImage;
 }
 
 #pragma mark - private -
@@ -193,9 +226,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 - (void)setupViewsWithPhoto:(UIImage *)photo
 {
     self.navigationItem.title = @"照片编辑器";
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"photo_edit_delete"] style:UIBarButtonItemStylePlain target:self action:@selector(delete:)];
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-    
     self.view.backgroundColor = [UIColor blackColor];
     
     self.photoView.image = photo;
@@ -203,52 +233,56 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     
     [self.photoView addObserver:self forKeyPath:kPhotoViewObserverPath options:NSKeyValueObservingOptionNew context:nil];
     
+    [self.view addSubview:self.bottomMaskView];
     [self.view addSubview:self.photoView];
     [self.view addSubview:self.rotateButton];
     [self.view addSubview:self.mosaicButton];
     [self.view addSubview:self.clipButton];
-    [self.view addSubview:self.coverButton];
+    [self.view addSubview:self.doneButton];
+    [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.rotateLabel];
     [self.view addSubview:self.mosaicLabel];
     [self.view addSubview:self.clipLabel];
     [self.view addSubview:self.coverLabel];
+    [self.view addSubview:self.filtersScrollView];
     
     [self resetFrame];
     self.photoView.clipsToBounds = YES;
     self.photoView.contentMode = UIViewContentModeScaleAspectFit;
     self.photoView.center = [self imageCenter];
+    
+    [self.filtersScrollView reloadData];
 }
 
 - (void)layoutFrame
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    self.rotateButton.frame = CGRectMake(screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
-    self.mosaicButton.frame = CGRectMake(3 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
-    self.clipButton.frame = CGRectMake(5 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
-    self.coverButton.frame = CGRectMake(7 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
     
-    self.rotateLabel.frame = CGRectMake(screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
-    self.mosaicLabel.frame = CGRectMake(3 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
-    self.clipLabel.frame = CGRectMake(5 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
-    self.coverLabel.frame = CGRectMake(7 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
+    self.bottomMaskView.frame = CGRectMake(0, screenSize.height - kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.width, kBottomButtonLeftPadding);
+    
+    self.rotateButton.frame = CGRectMake(screenSize.width / kButtonNumberFactor - (kButtonBaseWidth ) / 2 * SCREEN_FACTOR, screenSize.height - ((kButtonBaseWidth ) / 2 + kButtonToBottomPadding) * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR);
+    self.mosaicButton.frame = CGRectMake(3 * screenSize.width / kButtonNumberFactor - (kButtonBaseWidth ) / 2 * SCREEN_FACTOR, screenSize.height - ((kButtonBaseWidth ) / 2 + kButtonToBottomPadding) * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR);
+    self.clipButton.frame = CGRectMake(5 * screenSize.width / kButtonNumberFactor - (kButtonBaseWidth ) / 2 * SCREEN_FACTOR, screenSize.height - ((kButtonBaseWidth ) / 2 + kButtonToBottomPadding) * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR, kButtonBaseWidth * SCREEN_FACTOR);
+    self.cancelButton.frame = CGRectMake(kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
+    self.doneButton.frame = CGRectMake(screenSize.width - (kBottomButtonLeftPadding + kDoneButtonHeight) * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
+    
+    self.rotateLabel.frame = CGRectMake(screenSize.width / kButtonNumberFactor - kLabelBaseWidth / 2 * SCREEN_FACTOR, screenSize.height - (kLabelBaseWidth / 2 + kLabelToBottomPadding) * SCREEN_FACTOR, kLabelBaseWidth * SCREEN_FACTOR, 30 * SCREEN_FACTOR);
+    self.mosaicLabel.frame = CGRectMake(3 * screenSize.width / kButtonNumberFactor - kLabelBaseWidth / 2 * SCREEN_FACTOR, screenSize.height - (kLabelBaseWidth / 2 + kLabelToBottomPadding) * SCREEN_FACTOR, kLabelBaseWidth * SCREEN_FACTOR, 30 * SCREEN_FACTOR);
+    self.clipLabel.frame = CGRectMake(5 * screenSize.width / kButtonNumberFactor - kLabelBaseWidth / 2 * SCREEN_FACTOR, screenSize.height - (kLabelBaseWidth / 2 + kLabelToBottomPadding) * SCREEN_FACTOR, kLabelBaseWidth * SCREEN_FACTOR, 30 * SCREEN_FACTOR);
+    
+    self.filtersScrollView.frame = CGRectMake(0, self.rotateButton.frame.origin.y - kFilterScrollViewHeight * SCREEN_FACTOR - 10, screenSize.width, kFilterScrollViewHeight * SCREEN_FACTOR);
 }
 
 - (void)resetFrame
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    if (self.photoView.image.size.width >= self.photoView.image.size.height) {
-        self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width * 0.75f);
-    } else {
-        self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kPortraitPhotoPadding);
-    }
+    self.photoView.frame = CGRectMake(0, 44, screenSize.width, self.filtersScrollView.frame.origin.y - 64);
 }
 
 - (CGPoint)imageCenter
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGFloat y = screenSize.height / 2 - ((kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding + 66) / 2;
+    CGFloat y = (self.filtersScrollView.frame.origin.y + 64) / 2.0f;
     return CGPointMake(screenSize.width / 2, y);
 }
 
@@ -266,7 +300,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_rotateButton) {
         _rotateButton = [[UIButton alloc] init];
-        [_rotateButton setImage:[UIImage imageNamed:@"photo_edit_rotate"] forState:UIControlStateNormal];
+        [_rotateButton setImage:[UIImage imageNamed:@"qingquan_rotate_button"] forState:UIControlStateNormal];
         _rotateButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_rotateButton addTarget:self action:@selector(rotate:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -277,7 +311,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_mosaicButton) {
         _mosaicButton = [[UIButton alloc] init];
-        [_mosaicButton setImage:[UIImage imageNamed:@"photo_edit_mosaic"] forState:UIControlStateNormal];
+        [_mosaicButton setImage:[UIImage imageNamed:@"qingquan_mosaic_button"] forState:UIControlStateNormal];
         _mosaicButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_mosaicButton addTarget:self action:@selector(mosaic:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -288,22 +322,32 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_clipButton) {
         _clipButton = [[UIButton alloc] init];
-        [_clipButton setImage:[UIImage imageNamed:@"photo_edit_clip"] forState:UIControlStateNormal];
+        [_clipButton setImage:[UIImage imageNamed:@"qingquan_clip_button"] forState:UIControlStateNormal];
         _clipButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_clipButton addTarget:self action:@selector(clip:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _clipButton;
 }
 
-- (UIButton *)coverButton
+- (UIButton *)doneButton
 {
-    if (!_coverButton) {
-        _coverButton = [[UIButton alloc] init];
-        [_coverButton setImage:[UIImage imageNamed:@"photo_edit_cover"] forState:UIControlStateNormal];
-        _coverButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [_coverButton addTarget:self action:@selector(cover:) forControlEvents:UIControlEventTouchUpInside];
+    if (!_doneButton) {
+        _doneButton = [[UIButton alloc] init];
+        [_doneButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
+        _doneButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_doneButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _coverButton;
+    return _doneButton;
+}
+
+- (UIButton *)cancelButton {
+    if(_cancelButton == nil) {
+        _cancelButton = [[UIButton alloc] init];
+        [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
+        _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cancelButton;
 }
 
 - (UILabel *)rotateLabel
@@ -356,6 +400,25 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
         _coverLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _coverLabel;
+}
+
+- (BUKPhotoFiltersScrollView *)filtersScrollView
+{
+    if (!_filtersScrollView) {
+        _filtersScrollView = [[BUKPhotoFiltersScrollView alloc] init];
+        _filtersScrollView.filtersDelegate = self;
+        _filtersScrollView.dataSource = self;
+        _filtersScrollView.backgroundColor = [UIColor pev_darkGrayColor];
+    }
+    return _filtersScrollView;
+}
+
+- (UIView *)bottomMaskView {
+	if(_bottomMaskView == nil) {
+		_bottomMaskView = [[UIView alloc] init];
+        _bottomMaskView.backgroundColor = [UIColor pev_darkGrayColor];
+	}
+	return _bottomMaskView;
 }
 
 @end

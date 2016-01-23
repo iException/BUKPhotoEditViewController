@@ -161,6 +161,8 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [controller.navigationController popViewControllerAnimated:YES];
     self.photoView.image = photo;
     self.photoView.center = [self imageCenter];
+    
+    [self.filtersScrollView reloadData];
 }
 
 - (void)photoClipViewControllerDidCancelEditingPhoto:(BUKPhotoClipViewController *)controller
@@ -175,6 +177,8 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [controller.navigationController popViewControllerAnimated:YES];
     self.photoView.image = photo;
     self.photoView.center = [self imageCenter];
+    
+    [self.filtersScrollView reloadData];
 }
 
 - (void)photoMosaicViewControllerDidCancelEditingPhoto:(BUKPhotoMosaicViewController *)controller
