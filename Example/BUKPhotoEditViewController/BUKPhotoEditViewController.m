@@ -85,6 +85,12 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
      @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
+    [self.navigationItem setHidesBackButton:YES];
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    
     [self layoutFrame];
     
 }
@@ -95,6 +101,12 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor pev_blackColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor themeColor];
+    
+    [self.navigationItem setHidesBackButton:NO];
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
