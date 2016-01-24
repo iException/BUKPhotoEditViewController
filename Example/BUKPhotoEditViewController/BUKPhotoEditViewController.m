@@ -307,7 +307,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     if (!_rotateButton) {
         _rotateButton = [[UIButton alloc] init];
         [_rotateButton setImage:[UIImage imageNamed:@"qingquan_rotate_button"] forState:UIControlStateNormal];
-        _rotateButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_rotateButton addTarget:self action:@selector(rotate:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rotateButton;
@@ -318,7 +317,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     if (!_mosaicButton) {
         _mosaicButton = [[UIButton alloc] init];
         [_mosaicButton setImage:[UIImage imageNamed:@"qingquan_mosaic_button"] forState:UIControlStateNormal];
-        _mosaicButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_mosaicButton addTarget:self action:@selector(mosaic:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _mosaicButton;
@@ -329,7 +327,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     if (!_clipButton) {
         _clipButton = [[UIButton alloc] init];
         [_clipButton setImage:[UIImage imageNamed:@"qingquan_clip_button"] forState:UIControlStateNormal];
-        _clipButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_clipButton addTarget:self action:@selector(clip:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _clipButton;
@@ -340,7 +337,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     if (!_doneButton) {
         _doneButton = [[UIButton alloc] init];
         [_doneButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
-        _doneButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_doneButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _doneButton;
@@ -350,7 +346,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     if(_cancelButton == nil) {
         _cancelButton = [[UIButton alloc] init];
         [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
-        _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;
@@ -364,7 +359,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
         _rotateLabel.textColor = [UIColor whiteColor];
         _rotateLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
         _rotateLabel.textAlignment = NSTextAlignmentCenter;
-        _rotateLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _rotateLabel;
 }
@@ -377,7 +371,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
         _mosaicLabel.textColor = [UIColor whiteColor];
         _mosaicLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
         _mosaicLabel.textAlignment = NSTextAlignmentCenter;
-        _mosaicLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _mosaicLabel;
 }
@@ -390,7 +383,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
         _clipLabel.textColor = [UIColor whiteColor];
         _clipLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
         _clipLabel.textAlignment = NSTextAlignmentCenter;
-        _clipLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _clipLabel;
 }
@@ -403,7 +395,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
         _coverLabel.textColor = [UIColor whiteColor];
         _coverLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
         _coverLabel.textAlignment = NSTextAlignmentCenter;
-        _coverLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _coverLabel;
 }

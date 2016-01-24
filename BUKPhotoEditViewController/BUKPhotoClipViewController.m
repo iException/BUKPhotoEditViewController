@@ -325,7 +325,6 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     if (!_maskView) {
         _maskView = [[UIView alloc] init];
-        _maskView.translatesAutoresizingMaskIntoConstraints = NO;
         _maskView.backgroundColor = [UIColor blackColor];
         _maskView.userInteractionEnabled = NO;
         _maskView.opaque = NO;
@@ -345,7 +344,6 @@ static const CGFloat kButtonWidth = 24.0f;
     if(_confirmButton == nil) {
         _confirmButton = [[UIButton alloc] init];
         [_confirmButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
-        _confirmButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmButton;
@@ -355,7 +353,6 @@ static const CGFloat kButtonWidth = 24.0f;
     if(_cancelButton == nil) {
         _cancelButton = [[UIButton alloc] init];
         [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
-        _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;

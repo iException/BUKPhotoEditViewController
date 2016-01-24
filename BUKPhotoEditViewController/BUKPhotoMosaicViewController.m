@@ -217,7 +217,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     if (!_redoButton) {
         _redoButton = [[UIButton alloc] init];
         [_redoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_redo"] forState:UIControlStateNormal];
-        _redoButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_redoButton addTarget:self action:@selector(redo:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _redoButton;
@@ -228,7 +227,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     if (!_undoButton) {
         _undoButton = [[UIButton alloc] init];
         [_undoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_undo"] forState:UIControlStateNormal];
-        _undoButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_undoButton addTarget:self action:@selector(undo:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _undoButton;
@@ -243,7 +241,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         [_strokeSmallButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         _strokeSmallButton.tag = LCStrokeScaleSmall;
         _strokeSmallButton.contentEdgeInsets = InsetSquare(10);
-        _strokeSmallButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeSmallButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _strokeSmallButton;
@@ -258,7 +255,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         [_strokeMediumButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         _strokeMediumButton.contentEdgeInsets = InsetSquare(10);
         _strokeMediumButton.tag = LCStrokeScaleMedium;
-        _strokeMediumButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeMediumButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _strokeMediumButton;
@@ -273,7 +269,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         [_strokeLargeButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         _strokeLargeButton.contentEdgeInsets = InsetSquare(10);
         _strokeLargeButton.tag = LCStrokeScaleLarge;
-        _strokeLargeButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_strokeLargeButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _strokeLargeButton;
@@ -287,7 +282,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _strokeLabel.textColor = [UIColor whiteColor];
         _strokeLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
         _strokeLabel.textAlignment = NSTextAlignmentCenter;
-        _strokeLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _strokeLabel;
 }
@@ -300,7 +294,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _undoLabel.textColor = [UIColor whiteColor];
         _undoLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
         _undoLabel.textAlignment = NSTextAlignmentCenter;
-        _undoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _undoLabel;
 }
@@ -313,7 +306,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         _redoLabel.textColor = [UIColor whiteColor];
         _redoLabel.font = [UIFont systemFontOfSize:kDefaultFontSize];
         _redoLabel.textAlignment = NSTextAlignmentCenter;
-        _redoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _redoLabel;
 }
@@ -323,7 +315,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 	if(_confirmButton == nil) {
 		_confirmButton = [[UIButton alloc] init];
         [_confirmButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
-        _confirmButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return _confirmButton;
@@ -333,7 +324,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 	if(_cancelButton == nil) {
 		_cancelButton = [[UIButton alloc] init];
         [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
-        _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return _cancelButton;
