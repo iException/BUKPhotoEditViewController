@@ -14,4 +14,6 @@
 
 + (UIColor *)pev_darkGrayColor;
 
++ (UIColor *)pev_blackColor;
+
 @end

@@ -12,8 +12,9 @@
 
 @protocol BUKPhotoEditViewControllerDelegate <NSObject>
 
-- (void)photoEditViewController:(BUKPhotoEditViewController *)controller didFinishEditingPhoto:(UIImage *)photo;
-- (void)photoEditViewControllerDidCancelEditingPhoto:(BUKPhotoEditViewController *)controller;
+@required
+- (void)buk_photoEditViewController:(BUKPhotoEditViewController *)controller didFinishEditingPhoto:(UIImage *)photo;
+- (void)buk_photoEditViewControllerDidCancelEditingPhoto:(BUKPhotoEditViewController *)controller;
 
 @end
 

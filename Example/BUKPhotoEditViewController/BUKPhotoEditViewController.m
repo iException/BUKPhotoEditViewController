@@ -54,6 +54,12 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 
 #pragma mark - initializer -
 
+- (instancetype)init
+{
+    NSAssert(NO, @"You Can't Use This Method To Initialize, Please Use `initWithPhoto:` instead!");
+    return nil;
+}
+
 - (instancetype)initWithPhoto:(UIImage *)photo
 {
     self = [super init];
@@ -81,6 +87,14 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     
     [self layoutFrame];
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor pev_blackColor]}];
+    self.navigationController.navigationBar.tintColor = [UIColor themeColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,12 +152,14 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 
 - (void)confirm:(id)sender
 {
-    [self.delegate photoEditViewController:self didFinishEditingPhoto:self.photoView.image];
+    [self.delegate buk_photoEditViewController:self didFinishEditingPhoto:self.photoView.image];
 }
 
 - (void)cancel:(id)sender
 {
-    [self.delegate photoEditViewControllerDidCancelEditingPhoto:self];
+    if ([self.delegate respondsToSelector:@selector(buk_photoEditViewControllerDidCancelEditingPhoto:)]) {
+        [self.delegate buk_photoEditViewControllerDidCancelEditingPhoto:self];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context

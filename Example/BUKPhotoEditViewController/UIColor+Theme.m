@@ -21,4 +21,9 @@
     return [UIColor colorWithHex:@"252729"];
 }
 
++ (UIColor *)pev_blackColor
+{
+    return [UIColor colorWithHex:@"333333"];
+}
+
 @end
