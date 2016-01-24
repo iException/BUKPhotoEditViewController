@@ -58,7 +58,6 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     if (self) {
         _photo = photo;
         [self setupViewsWithPhoto:photo];
-        [self layoutFrame];
         
         self.lastSelectedButton = self.strokeMediumButton;
         [self.lastSelectedButton setImage:[UIImage imageNamed:@"qingquan_mosaic_fill"] forState:UIControlStateNormal];
@@ -74,6 +73,12 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self layoutFrame];
 }
 
 - (void)didReceiveMemoryWarning

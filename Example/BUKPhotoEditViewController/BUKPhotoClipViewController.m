@@ -48,7 +48,6 @@ static const CGFloat kButtonWidth = 24.0f;
     if (self) {
         _photo = photo;
         [self setupViewsWithPhoto:photo];
-        [self layoutFrame];
     }
     return self;
 }
@@ -59,6 +58,12 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self layoutFrame];
 }
 
 - (void)didReceiveMemoryWarning

@@ -69,7 +69,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     [super viewDidLoad];
 
-    [self layoutFrame];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -79,6 +78,8 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [self layoutFrame];
     
 }
 
@@ -249,13 +250,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [self.view addSubview:self.clipLabel];
     [self.view addSubview:self.coverLabel];
     [self.view addSubview:self.filtersScrollView];
-    
-    [self resetFrame];
-    self.photoView.clipsToBounds = YES;
-    self.photoView.contentMode = UIViewContentModeScaleAspectFit;
-    self.photoView.center = [self imageCenter];
-    
-    [self.filtersScrollView reloadData];
+
 }
 
 - (void)layoutFrame
@@ -275,6 +270,13 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     self.clipLabel.frame = CGRectMake(5 * screenSize.width / kButtonNumberFactor - kLabelBaseWidth / 2 * SCREEN_FACTOR, screenSize.height - (kLabelBaseWidth / 2 + kLabelToBottomPadding) * SCREEN_FACTOR, kLabelBaseWidth * SCREEN_FACTOR, 30 * SCREEN_FACTOR);
     
     self.filtersScrollView.frame = CGRectMake(0, self.rotateButton.frame.origin.y - kFilterScrollViewHeight * SCREEN_FACTOR - 10, screenSize.width, kFilterScrollViewHeight * SCREEN_FACTOR);
+    
+    [self resetFrame];
+    self.photoView.clipsToBounds = YES;
+    self.photoView.contentMode = UIViewContentModeScaleAspectFit;
+    self.photoView.center = [self imageCenter];
+    
+    [self.filtersScrollView reloadData];
 }
 
 - (void)resetFrame
