@@ -13,6 +13,7 @@
 + (UIColor *)colorWithHex:(NSString *)hex {
     NSScanner *scanner = [NSScanner scannerWithString:hex];
     UIColor *color = nil;
+    
     unsigned integer;
     [scanner scanHexInt:&integer];
     if (hex.length == 6) {
