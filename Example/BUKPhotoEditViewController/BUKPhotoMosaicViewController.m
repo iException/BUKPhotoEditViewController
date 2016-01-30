@@ -71,14 +71,13 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self layoutFrame];
     // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self layoutFrame];
 }
 
 - (void)didReceiveMemoryWarning
@@ -158,15 +157,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     [self.view addSubview:self.strokeLabel];
     [self.view addSubview:self.undoLabel];
     [self.view addSubview:self.redoLabel];
-    
-    self.photoView = [[LCMosaicImageView alloc] initWithImage:photo];
-    self.photoView.mosaicEnabled = YES;
-    self.photoView.mosaicLevel = LCMosaicLevelHigh;
-    self.photoView.strokeScale = LCStrokeScaleLarge;
-    self.photoView.delegate = self;
-    self.photoView.backgroundColor = [UIColor clearColor];
 
-    [self.view addSubview:self.photoView];
 }
 
 - (void)layoutFrame
@@ -176,9 +167,9 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     
     self.bottomMaskView.frame = CGRectMake(0, screenSize.height - kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.width, kBottomButtonLeftPadding);
     
-    self.strokeSmallButton.frame = CGRectMake(screenSize.width / 8.0f - (kStrokeButtonBasedWidth * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * scale, kStrokeButtonBasedWidth * scale);
-    self.strokeMediumButton.frame = CGRectMake(2 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.25 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.25 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.25 * scale, kStrokeButtonBasedWidth * 1.25 * scale);
-    self.strokeLargeButton.frame = CGRectMake(3 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.5 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.5 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.5 * scale, kStrokeButtonBasedWidth * 1.5 * scale);
+    self.strokeSmallButton.frame = CGRectMake(screenSize.width / 8.0f - (kStrokeButtonBasedWidth * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * scale * SCREEN_FACTOR, kStrokeButtonBasedWidth * scale * SCREEN_FACTOR);
+    self.strokeMediumButton.frame = CGRectMake(2 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.25 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.25 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.25 * scale * SCREEN_FACTOR, kStrokeButtonBasedWidth * 1.25 * scale * SCREEN_FACTOR);
+    self.strokeLargeButton.frame = CGRectMake(3 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.5 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.5 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.5 * scale * SCREEN_FACTOR, kStrokeButtonBasedWidth * 1.5 * scale * SCREEN_FACTOR);
     
     self.undoButton.frame = CGRectMake(5 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
     self.redoButton.frame = CGRectMake(7 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
@@ -189,8 +180,17 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
     self.undoLabel.frame = CGRectMake(5 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
     self.redoLabel.frame = CGRectMake(7 * screenSize.width / 8.0f - kLabelBaseWidth / 2, screenSize.height - kLabelBaseWidth / 2 - kLabelToBottomPadding, kLabelBaseWidth, 30);
     
-    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR - 64);
     
+    self.photoView = [[LCMosaicImageView alloc] init];
+    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR - 64);
+    self.photoView.image = self.photo;
+    self.photoView.mosaicEnabled = YES;
+    self.photoView.mosaicLevel = LCMosaicLevelHigh;
+    self.photoView.strokeScale = LCStrokeScaleLarge;
+    self.photoView.delegate = self;
+    self.photoView.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview:self.photoView];
     CGFloat heightByWidth = (self.photo.size.height / self.photo.size.width);
     CGFloat height = screenSize.width * heightByWidth;
     if (height > self.photoView.frame.size.height) {
@@ -240,7 +240,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         [_strokeSmallButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
         [_strokeSmallButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
         _strokeSmallButton.tag = LCStrokeScaleSmall;
-        _strokeSmallButton.contentEdgeInsets = InsetSquare(10);
+        _strokeSmallButton.contentEdgeInsets = InsetSquare(10 * SCREEN_FACTOR);
         [_strokeSmallButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _strokeSmallButton;
@@ -253,7 +253,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         [_strokeMediumButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeMediumButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
         [_strokeMediumButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
-        _strokeMediumButton.contentEdgeInsets = InsetSquare(10);
+        _strokeMediumButton.contentEdgeInsets = InsetSquare(10 * SCREEN_FACTOR);
         _strokeMediumButton.tag = LCStrokeScaleMedium;
         [_strokeMediumButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -267,7 +267,7 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
         [_strokeLargeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeLargeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
         [_strokeLargeButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
-        _strokeLargeButton.contentEdgeInsets = InsetSquare(10);
+        _strokeLargeButton.contentEdgeInsets = InsetSquare(10 * SCREEN_FACTOR);
         _strokeLargeButton.tag = LCStrokeScaleLarge;
         [_strokeLargeButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
     }

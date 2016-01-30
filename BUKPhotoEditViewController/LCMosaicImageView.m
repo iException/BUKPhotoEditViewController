@@ -30,13 +30,8 @@
         _originalImage = imageNoRotate;
         _mosaicLevel = LCMosaicLevelDefault;
         _strokeScale = LCStrokeScaleDefault;
-        [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
-}
-
-- (void)dealloc {
-    [self removeObserver:self forKeyPath:@"frame"];
 }
 
 #pragma mark - api
@@ -130,6 +125,7 @@
         __block UIImage *image = [self mosaicImageAtLevel:self.mosaicLevel];
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             self.mosaicImage = image;
+            self.image = self.compressedImage;
         });
     });
 }
@@ -169,14 +165,12 @@
 }
 
 - (UIImage *)mosaicImage:(UIImage *)image inLevel:(LCMosaicLevel)mosaicLevel {
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGImageRef imageRef = [image CGImage];
     NSUInteger width = CGImageGetWidth(imageRef);
     NSUInteger height = CGImageGetHeight(imageRef);
     NSUInteger maxOffset = height * width * 4;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGFloat scale = self.originalImage.size.width / screenSize.width;
-    NSInteger level = mosaicLevel * [UIScreen mainScreen].scale * scale;
+    NSInteger level = mosaicLevel * [UIScreen mainScreen].scale;
     unsigned char *rawData = (unsigned char *) calloc(maxOffset, sizeof(unsigned char));
     NSUInteger bytesPerPixel = 4;
     NSUInteger bytesPerRow = bytesPerPixel * width;

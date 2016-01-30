@@ -12,7 +12,7 @@
 		6339E1061C473BBC001AA9E5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6339E1051C473BBC001AA9E5 /* CoreImage.framework */; };
 		6339E1101C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */; };
 		6339E1131C474DDA001AA9E5 /* BUKPhotoFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */; };
-		638EBECE1C52094C001DAC6E /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638EBECD1C52094C001DAC6E /* 11.jpg */; };
+		637E02381C5CE3E90057777B /* LCMosaicImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E02361C5CE3E90057777B /* LCMosaicImageView.m */; };
 		638EBED51C520A23001DAC6E /* BUKPhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EBED41C520A23001DAC6E /* BUKPhotoFilter.m */; };
 		638EBED81C520DB5001DAC6E /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EBED71C520DB5001DAC6E /* UIImage+Crop.m */; };
 		63DEFBB71BEF04250089746C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBB61BEF04250089746C /* main.m */; };
@@ -24,7 +24,6 @@
 		63DEFBD71BEF04640089746C /* BUKPhotoClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBCE1BEF04640089746C /* BUKPhotoClipViewController.m */; };
 		63DEFBD81BEF04640089746C /* BUKPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD01BEF04640089746C /* BUKPhotoEditViewController.m */; };
 		63DEFBD91BEF04640089746C /* BUKPhotoMosaicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD21BEF04640089746C /* BUKPhotoMosaicViewController.m */; };
-		63DEFBDA1BEF04640089746C /* LCMosaicImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD41BEF04640089746C /* LCMosaicImageView.m */; };
 		63DEFBDB1BEF04640089746C /* UIColor+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD61BEF04640089746C /* UIColor+hex.m */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +36,8 @@
 		6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFiltersScrollView.m; sourceTree = "<group>"; };
 		6339E1111C474DDA001AA9E5 /* BUKPhotoFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFilterView.h; sourceTree = "<group>"; };
 		6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFilterView.m; sourceTree = "<group>"; };
-		638EBECD1C52094C001DAC6E /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		637E02361C5CE3E90057777B /* LCMosaicImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCMosaicImageView.m; sourceTree = "<group>"; };
+		637E02371C5CE3E90057777B /* LCMosaicImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCMosaicImageView.h; sourceTree = "<group>"; };
 		638EBED31C520A23001DAC6E /* BUKPhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFilter.h; sourceTree = "<group>"; };
 		638EBED41C520A23001DAC6E /* BUKPhotoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFilter.m; sourceTree = "<group>"; };
 		638EBED61C520DB5001DAC6E /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
@@ -58,8 +58,6 @@
 		63DEFBD01BEF04640089746C /* BUKPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoEditViewController.m; sourceTree = "<group>"; };
 		63DEFBD11BEF04640089746C /* BUKPhotoMosaicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoMosaicViewController.h; sourceTree = "<group>"; };
 		63DEFBD21BEF04640089746C /* BUKPhotoMosaicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoMosaicViewController.m; sourceTree = "<group>"; };
-		63DEFBD31BEF04640089746C /* LCMosaicImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCMosaicImageView.h; sourceTree = "<group>"; };
-		63DEFBD41BEF04640089746C /* LCMosaicImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCMosaicImageView.m; sourceTree = "<group>"; };
 		63DEFBD51BEF04640089746C /* UIColor+hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hex.h"; sourceTree = "<group>"; };
 		63DEFBD61BEF04640089746C /* UIColor+hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hex.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,10 +99,10 @@
 		6339E10C1C473C88001AA9E5 /* Mosaic */ = {
 			isa = PBXGroup;
 			children = (
+				637E02361C5CE3E90057777B /* LCMosaicImageView.m */,
+				637E02371C5CE3E90057777B /* LCMosaicImageView.h */,
 				63DEFBD11BEF04640089746C /* BUKPhotoMosaicViewController.h */,
 				63DEFBD21BEF04640089746C /* BUKPhotoMosaicViewController.m */,
-				63DEFBD31BEF04640089746C /* LCMosaicImageView.h */,
-				63DEFBD41BEF04640089746C /* LCMosaicImageView.m */,
 			);
 			name = Mosaic;
 			sourceTree = "<group>";
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				6330CCD41C52144E005FD450 /* 2.png */,
-				638EBECD1C52094C001DAC6E /* 11.jpg */,
 				6339E1051C473BBC001AA9E5 /* CoreImage.framework */,
 				63DEFBB61BEF04250089746C /* main.m */,
 			);
@@ -239,7 +236,6 @@
 				63DEFBC51BEF04250089746C /* LaunchScreen.storyboard in Resources */,
 				63DEFBC21BEF04250089746C /* Assets.xcassets in Resources */,
 				6330CCD51C52144E005FD450 /* 2.png in Resources */,
-				638EBECE1C52094C001DAC6E /* 11.jpg in Resources */,
 				63DEFBC01BEF04250089746C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,7 +255,7 @@
 				63DEFBBA1BEF04250089746C /* AppDelegate.m in Sources */,
 				6339E1131C474DDA001AA9E5 /* BUKPhotoFilterView.m in Sources */,
 				63DEFBD81BEF04640089746C /* BUKPhotoEditViewController.m in Sources */,
-				63DEFBDA1BEF04640089746C /* LCMosaicImageView.m in Sources */,
+				637E02381C5CE3E90057777B /* LCMosaicImageView.m in Sources */,
 				63DEFBDB1BEF04640089746C /* UIColor+hex.m in Sources */,
 				638EBED81C520DB5001DAC6E /* UIImage+Crop.m in Sources */,
 				63DEFBD71BEF04640089746C /* BUKPhotoClipViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "BUKPhotoMosaicViewController.h"
 #import "BUKPhotoFiltersScrollView.h"
 #import "BUKPhotoFilterView.h"
+#import "UIImage+Crop.h"
 #import "UIColor+Theme.h"
 
 #define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width/414.0
@@ -51,6 +52,8 @@ static const CGFloat kLabelBaseWidth = 60.0f;
 static const CGFloat kDefaultFontSize = 14.0f;
 static const CGFloat kButtonNumberFactor = 6.0f;
 static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
+
+static const CGFloat kLimitWidthSize = 480.0f;
 
 #pragma mark - initializer -
 
@@ -228,19 +231,19 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     CIFilter *filter;
     
     if (index == 0) {
-        name = @"无";
+        name = @"原图";
         filter = nil;
     } else if (index == 1) {
-        name = @"不知道";
-        filter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
-    } else if (index == 2) {
-        name = @"哈哈";
+        name = @"经典lomo";
         filter = [CIFilter filterWithName:@"CIPhotoEffectChrome"];
+    } else if (index == 2) {
+        name = @"淡雅";
+        filter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
     } else if (index == 3) {
-        name = @"乐空空";
+        name = @"蓝调";
         filter = [CIFilter filterWithName:@"CIPhotoEffectProcess"];
     } else if (index == 4) {
-        name = @"666";
+        name = @"复古";
         filter = [CIFilter filterWithName:@"CIPhotoEffectFade"];
     }
     
@@ -261,6 +264,13 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     self.navigationItem.title = @"照片编辑器";
     self.view.backgroundColor = [UIColor blackColor];
     
+//    NSData *data = UIImageJPEGRepresentation(photo, 0.2f);
+//    photo = [UIImage imageWithData:data];
+//    if (photo.size.width > kLimitWidthSize || photo.size.height > kLimitWidthSize) {
+//        CGFloat factor = photo.size.width / photo.size.height;
+//        photo = (factor > 1) ? [photo imageCroppedToSize:CGSizeMake(kLimitWidthSize, kLimitWidthSize / factor)] : [photo imageCroppedToSize:CGSizeMake(kLimitWidthSize * factor, kLimitWidthSize)];
+//    }
+//    
     self.photoView.image = photo;
     self.originalPhoto = photo;
     
