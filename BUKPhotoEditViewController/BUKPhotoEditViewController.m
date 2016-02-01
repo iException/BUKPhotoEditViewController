@@ -53,8 +53,6 @@ static const CGFloat kDefaultFontSize = 14.0f;
 static const CGFloat kButtonNumberFactor = 6.0f;
 static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 
-static const CGFloat kLimitWidthSize = 480.0f;
-
 #pragma mark - initializer -
 
 - (instancetype)init
