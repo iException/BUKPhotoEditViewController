@@ -13,5 +13,6 @@
 - (UIImage *)imageCroppedToSize:(CGSize)size;
 - (UIImage *)thumbnailWithSize:(CGSize)size;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
+- (UIImage *)crop:(CGRect)rect;
 
 @end

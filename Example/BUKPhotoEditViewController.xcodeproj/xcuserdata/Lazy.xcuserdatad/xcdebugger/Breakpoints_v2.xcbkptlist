@@ -59,11 +59,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476003027.288075"
+            timestampString = "476008028.181853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-originForCurrentPhotoView"
             landmarkType = "5">
          </BreakpointContent>
@@ -75,11 +75,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476003027.288075"
+            timestampString = "476008028.181853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-handlePan:"
             landmarkType = "5">
             <Locations>
@@ -123,11 +123,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476003027.288075"
+            timestampString = "476008028.181853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-setupViewsWithPhoto:"
             landmarkType = "5">
          </BreakpointContent>
@@ -171,27 +171,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476003027.288075"
+            timestampString = "476008028.181853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-clipPhoto"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476003027.288075"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-clipArea"
             landmarkType = "5">
          </BreakpointContent>
@@ -283,11 +267,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
-            timestampString = "476004274.304702"
+            timestampString = "476006624.861591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "-layoutFrame"
             landmarkType = "5">
          </BreakpointContent>
@@ -337,6 +321,22 @@
             startingLineNumber = "140"
             endingLineNumber = "140"
             landmarkName = "-captureScreen"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
+            timestampString = "476008028.181853"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "-clipArea"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

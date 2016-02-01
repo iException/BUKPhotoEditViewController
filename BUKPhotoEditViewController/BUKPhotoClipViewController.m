@@ -8,6 +8,7 @@
 
 #import "BUKPhotoClipViewController.h"
 #import "UIColor+Theme.h"
+#import "UIImage+Crop.h"
 
 @interface BUKPhotoClipViewController (){
     CGPoint initialPosition;
@@ -160,11 +161,7 @@ static const CGFloat kButtonWidth = 24.0f;
 - (UIImage *)clipPhoto
 {
     CGRect rect = [self clipArea];
-    CGImageRef imageRef = CGImageCreateWithImageInRect([self.photoView.image CGImage], rect);
-    UIImage *img = [UIImage imageWithCGImage:imageRef];
-    
-    CGImageRelease(imageRef);
-    
+    UIImage *img = [self.photo crop:rect];
     return img;
 }
 
