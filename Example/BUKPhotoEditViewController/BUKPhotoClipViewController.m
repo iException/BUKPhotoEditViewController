@@ -159,23 +159,44 @@ static const CGFloat kButtonWidth = 24.0f;
 
 - (UIImage *)clipPhoto
 {
-    CGFloat clipOriginx = (self.photoView.frame.origin.x > currentMaskRect.origin.x) ? self.photoView.frame.origin.x : currentMaskRect.origin.x;
-    CGFloat clipOriginY = (self.photoView.frame.origin.y > currentMaskRect.origin.y) ? self.photoView.frame.origin.y : currentMaskRect.origin.y;
-    CGFloat clipWidth = (self.photoView.frame.size.width < currentMaskRect.size.width) ? self.photoView.frame.size.width : currentMaskRect.size.width;
-    CGFloat clipHeight = (self.photoView.frame.size.height < currentMaskRect.size.height) ? self.photoView.frame.size.height : currentMaskRect.size.height;
-    CGRect clipArea = CGRectMake(clipOriginx, clipOriginY, clipWidth, clipHeight);
-    
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CGRect rect = clipArea;
-    CGImageRef imageRef = CGImageCreateWithImageInRect([viewImage CGImage], rect);
+    CGRect rect = [self clipArea];
+    CGImageRef imageRef = CGImageCreateWithImageInRect([self.photoView.image CGImage], rect);
     UIImage *img = [UIImage imageWithCGImage:imageRef];
     
     CGImageRelease(imageRef);
     
     return img;
+}
+
+- (CGRect)clipArea
+{
+    CGFloat clipOriginx = (self.photoView.frame.origin.x > currentMaskRect.origin.x) ? self.photoView.frame.origin.x : currentMaskRect.origin.x;
+    CGFloat clipOriginY = (self.photoView.frame.origin.y > currentMaskRect.origin.y) ? self.photoView.frame.origin.y : currentMaskRect.origin.y;
+    CGFloat clipWidth = (self.photoView.frame.size.width < currentMaskRect.size.width) ? self.photoView.frame.size.width : currentMaskRect.size.width;
+    CGFloat clipHeight = (self.photoView.frame.size.height < currentMaskRect.size.height) ? self.photoView.frame.size.height : currentMaskRect.size.height;
+    
+    CGRect photoRect = self.photoView.frame;
+    CGFloat originXPercentage = (clipOriginx - photoRect.origin.x) / photoRect.size.width;
+    if (originXPercentage < 0) {
+        originXPercentage = 0;
+    }
+    CGFloat originYPercentage = (clipOriginY - photoRect.origin.y) / photoRect.size.height;
+    if (originYPercentage < 0) {
+        originYPercentage = 0;
+    }
+    CGFloat widthPercentage = clipWidth / photoRect.size.width;
+    if (widthPercentage > 1) {
+        widthPercentage = 1;
+    }
+    CGFloat heightPercentage = clipHeight / photoRect.size.height;
+    if (heightPercentage > 1) {
+        heightPercentage = 1;
+    }
+    
+    CGSize imageSize = self.photoView.image.size;
+    CGRect clipArea = CGRectMake(originXPercentage * imageSize.width, originYPercentage * imageSize.height, widthPercentage * imageSize.width, heightPercentage * imageSize.height);
+    
+    return clipArea;
 }
 
 - (void)setupViewsWithPhoto:(UIImage *)photo

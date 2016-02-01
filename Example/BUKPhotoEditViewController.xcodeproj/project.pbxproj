@@ -12,6 +12,7 @@
 		6339E1061C473BBC001AA9E5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6339E1051C473BBC001AA9E5 /* CoreImage.framework */; };
 		6339E1101C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */; };
 		6339E1131C474DDA001AA9E5 /* BUKPhotoFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */; };
+		634D34041C5F2C8700AD3F50 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 634D34031C5F2C8700AD3F50 /* 1.jpg */; };
 		637E02381C5CE3E90057777B /* LCMosaicImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E02361C5CE3E90057777B /* LCMosaicImageView.m */; };
 		638EBED51C520A23001DAC6E /* BUKPhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EBED41C520A23001DAC6E /* BUKPhotoFilter.m */; };
 		638EBED81C520DB5001DAC6E /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EBED71C520DB5001DAC6E /* UIImage+Crop.m */; };
@@ -36,6 +37,7 @@
 		6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFiltersScrollView.m; sourceTree = "<group>"; };
 		6339E1111C474DDA001AA9E5 /* BUKPhotoFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFilterView.h; sourceTree = "<group>"; };
 		6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFilterView.m; sourceTree = "<group>"; };
+		634D34031C5F2C8700AD3F50 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		637E02361C5CE3E90057777B /* LCMosaicImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCMosaicImageView.m; sourceTree = "<group>"; };
 		637E02371C5CE3E90057777B /* LCMosaicImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCMosaicImageView.h; sourceTree = "<group>"; };
 		638EBED31C520A23001DAC6E /* BUKPhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFilter.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		63DEFBB51BEF04250089746C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				634D34031C5F2C8700AD3F50 /* 1.jpg */,
 				6330CCD41C52144E005FD450 /* 2.png */,
 				6339E1051C473BBC001AA9E5 /* CoreImage.framework */,
 				63DEFBB61BEF04250089746C /* main.m */,
@@ -237,6 +240,7 @@
 				63DEFBC21BEF04250089746C /* Assets.xcassets in Resources */,
 				6330CCD51C52144E005FD450 /* 2.png in Resources */,
 				63DEFBC01BEF04250089746C /* Main.storyboard in Resources */,
+				634D34041C5F2C8700AD3F50 /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
