@@ -181,7 +181,15 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
     
     
     self.photoView = [[LCMosaicImageView alloc] init];
-    self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR - 64);
+    CGFloat heightByWidth = (self.photo.size.height / self.photo.size.width);
+    CGFloat height = screenSize.width * heightByWidth;
+    CGFloat photoViewHeight = screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR - 64;
+    if (height > photoViewHeight) {
+        self.photoView.frame = CGRectMake(0, 0, photoViewHeight * (self.photo.size.width / self.photo.size.height), photoViewHeight);
+    } else {
+        self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width * heightByWidth);
+    }
+    
     self.photoView.image = self.photo;
     self.photoView.mosaicEnabled = YES;
     self.photoView.mosaicLevel = LCMosaicLevelHigh;
@@ -190,14 +198,6 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
     self.photoView.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:self.photoView];
-    CGFloat heightByWidth = (self.photo.size.height / self.photo.size.width);
-    CGFloat height = screenSize.width * heightByWidth;
-    if (height > self.photoView.frame.size.height) {
-        self.photoView.frame = CGRectMake(0, 0, self.photoView.frame.size.height * (self.photo.size.width / self.photo.size.height), self.photoView.frame.size.height);
-    } else {
-        self.photoView.frame = CGRectMake(0, 0, screenSize.width, self.photoView.frame.size.height * heightByWidth);
-    }
-    
     self.photoView.clipsToBounds = YES;
     self.photoView.center = [self imageCenter];
 }

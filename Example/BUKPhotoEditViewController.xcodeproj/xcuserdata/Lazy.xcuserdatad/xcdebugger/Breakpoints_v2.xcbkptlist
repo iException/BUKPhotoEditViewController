@@ -43,11 +43,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
-            timestampString = "475997506.798668"
+            timestampString = "476004274.304702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-layoutFrame"
             landmarkType = "5">
          </BreakpointContent>
@@ -59,11 +59,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476002732.073196"
+            timestampString = "476003027.288075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-originForCurrentPhotoView"
             landmarkType = "5">
          </BreakpointContent>
@@ -75,11 +75,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476002732.073196"
+            timestampString = "476003027.288075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "-handlePan:"
             landmarkType = "5">
             <Locations>
@@ -123,11 +123,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476002732.073196"
+            timestampString = "476003027.288075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-setupViewsWithPhoto:"
             landmarkType = "5">
          </BreakpointContent>
@@ -171,11 +171,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476002732.073196"
+            timestampString = "476003027.288075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "-clipPhoto"
             landmarkType = "5">
          </BreakpointContent>
@@ -187,12 +187,156 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoClipViewController.m"
-            timestampString = "476002732.073196"
+            timestampString = "476003027.288075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-clipArea"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/BUKPhotoEditViewController.m"
+            timestampString = "476003600.383358"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-photoMosaicViewController:didFinishEditingPhoto:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
+            timestampString = "476003641.210821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-confirm:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
+            timestampString = "476003781.08273"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-initWithPhoto:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
+            timestampString = "476004159.476711"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-layoutFrame"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
+            timestampString = "476003819.887952"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-strokeTapped:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
+            timestampString = "476004274.304702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-layoutFrame"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/LCMosaicImageView.m"
+            timestampString = "476003884.830579"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-setup"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/LCMosaicImageView.m"
+            timestampString = "476003886.41662"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-setup"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BUKPhotoEditViewController/LCMosaicImageView.m"
+            timestampString = "476003906.016886"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-captureScreen"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
