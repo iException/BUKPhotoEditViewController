@@ -100,11 +100,6 @@ static const CGFloat kLimitWidthSize = 480.0f;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor pev_blackColor]}];
-    self.navigationController.navigationBar.tintColor = [UIColor themeColor];
-    
     [self.navigationItem setHidesBackButton:NO];
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
@@ -263,14 +258,7 @@ static const CGFloat kLimitWidthSize = 480.0f;
 {
     self.navigationItem.title = @"照片编辑器";
     self.view.backgroundColor = [UIColor blackColor];
-    
-//    NSData *data = UIImageJPEGRepresentation(photo, 0.2f);
-//    photo = [UIImage imageWithData:data];
-//    if (photo.size.width > kLimitWidthSize || photo.size.height > kLimitWidthSize) {
-//        CGFloat factor = photo.size.width / photo.size.height;
-//        photo = (factor > 1) ? [photo imageCroppedToSize:CGSizeMake(kLimitWidthSize, kLimitWidthSize / factor)] : [photo imageCroppedToSize:CGSizeMake(kLimitWidthSize * factor, kLimitWidthSize)];
-//    }
-//    
+        
     self.photoView.image = photo;
     self.originalPhoto = photo;
     

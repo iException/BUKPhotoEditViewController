@@ -40,15 +40,15 @@
 
 @implementation BUKPhotoMosaicViewController
 
-static const CGFloat kButtonOriginToBottom = 172.0f;
-static const CGFloat kButtonToBottomPadding = 112.0f;
-static const CGFloat kLabelToBottomPadding = 55.0f;
+static const CGFloat kButtonOriginToBottom = 165.0f;
+static const CGFloat kButtonToBottomPadding = 105.0f;
+static const CGFloat kLabelToBottomPadding = 50.0f;
 static const CGFloat kButtonBaseWidth = 40.0f;
 static const CGFloat kBottomButtonLeftPadding = 43.0f;
 static const CGFloat kDoneButtonHeight = 47.0f;
 static const CGFloat kLabelBaseWidth = 60.0f;
 static const CGFloat kDefaultFontSize = 14.0f;
-static const CGFloat kStrokeButtonBasedWidth = 18.0f;
+static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 
 #pragma mark - initializer -
 
@@ -163,16 +163,15 @@ static const CGFloat kStrokeButtonBasedWidth = 18.0f;
 - (void)layoutFrame
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
     
     self.bottomMaskView.frame = CGRectMake(0, screenSize.height - kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.width, kBottomButtonLeftPadding);
     
-    self.strokeSmallButton.frame = CGRectMake(screenSize.width / 8.0f - (kStrokeButtonBasedWidth * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * scale * SCREEN_FACTOR, kStrokeButtonBasedWidth * scale * SCREEN_FACTOR);
-    self.strokeMediumButton.frame = CGRectMake(2 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.25 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.25 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.25 * scale * SCREEN_FACTOR, kStrokeButtonBasedWidth * 1.25 * scale * SCREEN_FACTOR);
-    self.strokeLargeButton.frame = CGRectMake(3 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.5 * scale) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.5 * scale) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.5 * scale * SCREEN_FACTOR, kStrokeButtonBasedWidth * 1.5 * scale * SCREEN_FACTOR);
+    self.strokeSmallButton.frame = CGRectMake(screenSize.width / 8.0f - (kStrokeButtonBasedWidth  * SCREEN_FACTOR) / 2, screenSize.height - (kStrokeButtonBasedWidth  * SCREEN_FACTOR) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth  * SCREEN_FACTOR, kStrokeButtonBasedWidth  * SCREEN_FACTOR);
+    self.strokeMediumButton.frame = CGRectMake(2 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.25  * SCREEN_FACTOR) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.25  * SCREEN_FACTOR) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.25  * SCREEN_FACTOR, kStrokeButtonBasedWidth * 1.25  * SCREEN_FACTOR);
+    self.strokeLargeButton.frame = CGRectMake(3 * screenSize.width / 8.0f - (kStrokeButtonBasedWidth * 1.5  * SCREEN_FACTOR) / 2, screenSize.height - (kStrokeButtonBasedWidth * 1.5  * SCREEN_FACTOR) / 2 - kButtonToBottomPadding, kStrokeButtonBasedWidth * 1.5  * SCREEN_FACTOR, kStrokeButtonBasedWidth * 1.5  * SCREEN_FACTOR);
     
-    self.undoButton.frame = CGRectMake(5 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
-    self.redoButton.frame = CGRectMake(7 * screenSize.width / 8.0f - (kButtonBaseWidth * scale) / 2, screenSize.height - (kButtonBaseWidth * scale) / 2 - kButtonToBottomPadding, kButtonBaseWidth * scale, kButtonBaseWidth * scale);
+    self.undoButton.frame = CGRectMake(5 * screenSize.width / 8.0f - (kButtonBaseWidth ) / 2, screenSize.height - (kButtonBaseWidth ) / 2 - kButtonToBottomPadding, kButtonBaseWidth , kButtonBaseWidth );
+    self.redoButton.frame = CGRectMake(7 * screenSize.width / 8.0f - (kButtonBaseWidth ) / 2, screenSize.height - (kButtonBaseWidth ) / 2 - kButtonToBottomPadding, kButtonBaseWidth , kButtonBaseWidth );
     self.cancelButton.frame = CGRectMake(kBottomButtonLeftPadding * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
     self.confirmButton.frame = CGRectMake(screenSize.width - (kBottomButtonLeftPadding + kDoneButtonHeight) * SCREEN_FACTOR, screenSize.height - kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR, kDoneButtonHeight * SCREEN_FACTOR);
     

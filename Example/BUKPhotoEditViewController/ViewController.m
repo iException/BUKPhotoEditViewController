@@ -20,7 +20,7 @@
     
     self.navigationItem.title = @"照片编辑器";
     
-    BUKPhotoEditViewController *photoEditViewController = [[BUKPhotoEditViewController alloc] initWithPhoto:[UIImage imageNamed:@"2.jpg"]];
+    BUKPhotoEditViewController *photoEditViewController = [[BUKPhotoEditViewController alloc] initWithPhoto:[UIImage imageNamed:@"2"]];
     [self.navigationController pushViewController:photoEditViewController animated:YES];
     // Do any additional setup after loading the view, typically from a nib.
 }

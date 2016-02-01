@@ -43,11 +43,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoMosaicViewController.m"
-            timestampString = "475850142.735979"
+            timestampString = "475997506.798668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-layoutFrame"
             landmarkType = "5">
          </BreakpointContent>
@@ -155,11 +155,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BUKPhotoEditViewController/BUKPhotoEditViewController.m"
-            timestampString = "475848679.832128"
+            timestampString = "475996430.48159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "-setupViewsWithPhoto:"
             landmarkType = "5">
          </BreakpointContent>
