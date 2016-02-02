@@ -185,9 +185,9 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
     CGFloat height = screenSize.width * heightByWidth;
     CGFloat photoViewHeight = screenSize.height - kButtonOriginToBottom * SCREEN_FACTOR - 64;
     if (height > photoViewHeight) {
-        self.photoView.frame = CGRectMake(0, 0, photoViewHeight * (self.photo.size.width / self.photo.size.height), photoViewHeight);
+        self.photoView.frame = CGRectMake(0, 0, ceil(photoViewHeight * (self.photo.size.width / self.photo.size.height)), ceil(photoViewHeight));
     } else {
-        self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width * heightByWidth);
+        self.photoView.frame = CGRectMake(0, 0, screenSize.width, ceil(screenSize.width * heightByWidth));
     }
     
     self.photoView.image = self.photo;
