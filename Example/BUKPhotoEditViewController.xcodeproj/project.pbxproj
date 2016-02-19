@@ -7,213 +7,261 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6330CCD51C52144E005FD450 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6330CCD41C52144E005FD450 /* 2.png */; };
-		6330CCD81C5215AC005FD450 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6330CCD71C5215AC005FD450 /* UIColor+Theme.m */; };
-		6339E1061C473BBC001AA9E5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6339E1051C473BBC001AA9E5 /* CoreImage.framework */; };
-		6339E1101C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */; };
-		6339E1131C474DDA001AA9E5 /* BUKPhotoFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */; };
-		634D34041C5F2C8700AD3F50 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 634D34031C5F2C8700AD3F50 /* 1.jpg */; };
-		637E02381C5CE3E90057777B /* LCMosaicImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E02361C5CE3E90057777B /* LCMosaicImageView.m */; };
-		638EBED51C520A23001DAC6E /* BUKPhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EBED41C520A23001DAC6E /* BUKPhotoFilter.m */; };
-		638EBED81C520DB5001DAC6E /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EBED71C520DB5001DAC6E /* UIImage+Crop.m */; };
-		63DEFBB71BEF04250089746C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBB61BEF04250089746C /* main.m */; };
-		63DEFBBA1BEF04250089746C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBB91BEF04250089746C /* AppDelegate.m */; };
-		63DEFBBD1BEF04250089746C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBBC1BEF04250089746C /* ViewController.m */; };
-		63DEFBC01BEF04250089746C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBBE1BEF04250089746C /* Main.storyboard */; };
-		63DEFBC21BEF04250089746C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBC11BEF04250089746C /* Assets.xcassets */; };
-		63DEFBC51BEF04250089746C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DEFBC31BEF04250089746C /* LaunchScreen.storyboard */; };
-		63DEFBD71BEF04640089746C /* BUKPhotoClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBCE1BEF04640089746C /* BUKPhotoClipViewController.m */; };
-		63DEFBD81BEF04640089746C /* BUKPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD01BEF04640089746C /* BUKPhotoEditViewController.m */; };
-		63DEFBD91BEF04640089746C /* BUKPhotoMosaicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD21BEF04640089746C /* BUKPhotoMosaicViewController.m */; };
-		63DEFBDB1BEF04640089746C /* UIColor+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DEFBD61BEF04640089746C /* UIColor+hex.m */; };
+		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
+		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
+		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
+		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
+		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
+		6003F59E195388D20070C39A /* BUKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* BUKAppDelegate.m */; };
+		6003F5A7195388D20070C39A /* BUKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* BUKViewController.m */; };
+		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
+		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
+		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
+		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
+		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
+		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6385DD2C1C76E9F7007F31B8 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385DD2A1C76E9F7007F31B8 /* 1.jpg */; };
+		6385DD2D1C76E9F7007F31B8 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6385DD2B1C76E9F7007F31B8 /* 2.png */; };
+		6385DD2E1C76EB31007F31B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		6385DD301C76EC98007F31B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6385DD2F1C76EC98007F31B8 /* LaunchScreen.xib */; };
+		8961BCA70AAB52CA41AB43B8 /* Pods_BUKPhotoEditViewController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D453B2CA557F0B95E8926A7D /* Pods_BUKPhotoEditViewController_Tests.framework */; };
+		8F7BC699BC4D4BFDAE078CC7 /* Pods_BUKPhotoEditViewController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15C4417FCC6BD133A2DD3AE /* Pods_BUKPhotoEditViewController_Example.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6003F5B3195388D20070C39A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6003F582195388D10070C39A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6003F589195388D20070C39A;
+			remoteInfo = BUKPhotoEditViewController;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		6330CCD41C52144E005FD450 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
-		6330CCD61C5215AC005FD450 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
-		6330CCD71C5215AC005FD450 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
-		6339E1051C473BBC001AA9E5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		6339E10E1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFiltersScrollView.h; sourceTree = "<group>"; };
-		6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFiltersScrollView.m; sourceTree = "<group>"; };
-		6339E1111C474DDA001AA9E5 /* BUKPhotoFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFilterView.h; sourceTree = "<group>"; };
-		6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFilterView.m; sourceTree = "<group>"; };
-		634D34031C5F2C8700AD3F50 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		637E02361C5CE3E90057777B /* LCMosaicImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCMosaicImageView.m; sourceTree = "<group>"; };
-		637E02371C5CE3E90057777B /* LCMosaicImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCMosaicImageView.h; sourceTree = "<group>"; };
-		638EBED31C520A23001DAC6E /* BUKPhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoFilter.h; sourceTree = "<group>"; };
-		638EBED41C520A23001DAC6E /* BUKPhotoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoFilter.m; sourceTree = "<group>"; };
-		638EBED61C520DB5001DAC6E /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
-		638EBED71C520DB5001DAC6E /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
-		63DEFBB21BEF04250089746C /* BUKPhotoEditViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BUKPhotoEditViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		63DEFBB61BEF04250089746C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		63DEFBB81BEF04250089746C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		63DEFBB91BEF04250089746C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		63DEFBBB1BEF04250089746C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		63DEFBBC1BEF04250089746C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		63DEFBBF1BEF04250089746C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		63DEFBC11BEF04250089746C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		63DEFBC41BEF04250089746C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		63DEFBC61BEF04250089746C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63DEFBCD1BEF04640089746C /* BUKPhotoClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoClipViewController.h; sourceTree = "<group>"; };
-		63DEFBCE1BEF04640089746C /* BUKPhotoClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoClipViewController.m; sourceTree = "<group>"; };
-		63DEFBCF1BEF04640089746C /* BUKPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoEditViewController.h; sourceTree = "<group>"; };
-		63DEFBD01BEF04640089746C /* BUKPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoEditViewController.m; sourceTree = "<group>"; };
-		63DEFBD11BEF04640089746C /* BUKPhotoMosaicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUKPhotoMosaicViewController.h; sourceTree = "<group>"; };
-		63DEFBD21BEF04640089746C /* BUKPhotoMosaicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUKPhotoMosaicViewController.m; sourceTree = "<group>"; };
-		63DEFBD51BEF04640089746C /* UIColor+hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hex.h"; sourceTree = "<group>"; };
-		63DEFBD61BEF04640089746C /* UIColor+hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hex.m"; sourceTree = "<group>"; };
+		03DE60ACFB403902E5A85DFF /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		13853EB4E92DF3122E44D1B0 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		13F40B79E17CFBDA3288DF15 /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		2BD95D32563C136991A9030D /* BUKPhotoEditViewController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BUKPhotoEditViewController.podspec; path = ../BUKPhotoEditViewController.podspec; sourceTree = "<group>"; };
+		6003F58A195388D20070C39A /* BUKPhotoEditViewController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BUKPhotoEditViewController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6003F595195388D20070C39A /* BUKPhotoEditViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BUKPhotoEditViewController-Info.plist"; sourceTree = "<group>"; };
+		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6003F59B195388D20070C39A /* BUKPhotoEditViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BUKPhotoEditViewController-Prefix.pch"; sourceTree = "<group>"; };
+		6003F59C195388D20070C39A /* BUKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BUKAppDelegate.h; sourceTree = "<group>"; };
+		6003F59D195388D20070C39A /* BUKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BUKAppDelegate.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* BUKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BUKViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* BUKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BUKViewController.m; sourceTree = "<group>"; };
+		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6003F5AE195388D20070C39A /* BUKPhotoEditViewController_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BUKPhotoEditViewController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
+		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6385DD2A1C76E9F7007F31B8 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		6385DD2B1C76E9F7007F31B8 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		6385DD2F1C76EC98007F31B8 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		711FD37A4404ADB1288E9563 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8CE83EE4D0E77DD765F3D0E8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C15C4417FCC6BD133A2DD3AE /* Pods_BUKPhotoEditViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BUKPhotoEditViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D453B2CA557F0B95E8926A7D /* Pods_BUKPhotoEditViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BUKPhotoEditViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBDC52B5E9801BA88F37FEA3 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		63DEFBAF1BEF04250089746C /* Frameworks */ = {
+		6003F587195388D20070C39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6339E1061C473BBC001AA9E5 /* CoreImage.framework in Frameworks */,
+				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
+				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
+				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
+				8F7BC699BC4D4BFDAE078CC7 /* Pods_BUKPhotoEditViewController_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6003F5AB195388D20070C39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
+				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
+				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
+				8961BCA70AAB52CA41AB43B8 /* Pods_BUKPhotoEditViewController_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6339E10A1C473C7B001AA9E5 /* Filters */ = {
+		0A03FB148554A8EBFB532FBA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6339E10E1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.h */,
-				6339E10F1C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m */,
-				6339E1111C474DDA001AA9E5 /* BUKPhotoFilterView.h */,
-				6339E1121C474DDA001AA9E5 /* BUKPhotoFilterView.m */,
-				638EBED31C520A23001DAC6E /* BUKPhotoFilter.h */,
-				638EBED41C520A23001DAC6E /* BUKPhotoFilter.m */,
+				13853EB4E92DF3122E44D1B0 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */,
+				13F40B79E17CFBDA3288DF15 /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */,
+				DBDC52B5E9801BA88F37FEA3 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */,
+				03DE60ACFB403902E5A85DFF /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */,
 			);
-			name = Filters;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		6339E10B1C473C81001AA9E5 /* Clip */ = {
+		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				63DEFBCD1BEF04640089746C /* BUKPhotoClipViewController.h */,
-				63DEFBCE1BEF04640089746C /* BUKPhotoClipViewController.m */,
-			);
-			name = Clip;
-			sourceTree = "<group>";
-		};
-		6339E10C1C473C88001AA9E5 /* Mosaic */ = {
-			isa = PBXGroup;
-			children = (
-				637E02361C5CE3E90057777B /* LCMosaicImageView.m */,
-				637E02371C5CE3E90057777B /* LCMosaicImageView.h */,
-				63DEFBD11BEF04640089746C /* BUKPhotoMosaicViewController.h */,
-				63DEFBD21BEF04640089746C /* BUKPhotoMosaicViewController.m */,
-			);
-			name = Mosaic;
-			sourceTree = "<group>";
-		};
-		6339E10D1C473CA3001AA9E5 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				638EBED61C520DB5001DAC6E /* UIImage+Crop.h */,
-				638EBED71C520DB5001DAC6E /* UIImage+Crop.m */,
-				63DEFBD51BEF04640089746C /* UIColor+hex.h */,
-				63DEFBD61BEF04640089746C /* UIColor+hex.m */,
-				6330CCD61C5215AC005FD450 /* UIColor+Theme.h */,
-				6330CCD71C5215AC005FD450 /* UIColor+Theme.m */,
-			);
-			name = Util;
-			sourceTree = "<group>";
-		};
-		63DEFBA91BEF04250089746C = {
-			isa = PBXGroup;
-			children = (
-				63DEFBB41BEF04250089746C /* BUKPhotoEditViewController */,
-				63DEFBB31BEF04250089746C /* Products */,
+				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
+				6003F593195388D20070C39A /* Example for BUKPhotoEditViewController */,
+				6003F5B5195388D20070C39A /* Tests */,
+				6003F58C195388D20070C39A /* Frameworks */,
+				6003F58B195388D20070C39A /* Products */,
+				0A03FB148554A8EBFB532FBA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
-		63DEFBB31BEF04250089746C /* Products */ = {
+		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63DEFBB21BEF04250089746C /* BUKPhotoEditViewController.app */,
+				6003F58A195388D20070C39A /* BUKPhotoEditViewController_Example.app */,
+				6003F5AE195388D20070C39A /* BUKPhotoEditViewController_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63DEFBB41BEF04250089746C /* BUKPhotoEditViewController */ = {
+		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				63DEFBCC1BEF042B0089746C /* BUKPhotoEditViewController */,
-				63DEFBB81BEF04250089746C /* AppDelegate.h */,
-				63DEFBB91BEF04250089746C /* AppDelegate.m */,
-				63DEFBBB1BEF04250089746C /* ViewController.h */,
-				63DEFBBC1BEF04250089746C /* ViewController.m */,
-				63DEFBBE1BEF04250089746C /* Main.storyboard */,
-				63DEFBC11BEF04250089746C /* Assets.xcassets */,
-				63DEFBC31BEF04250089746C /* LaunchScreen.storyboard */,
-				63DEFBC61BEF04250089746C /* Info.plist */,
-				63DEFBB51BEF04250089746C /* Supporting Files */,
+				6003F58D195388D20070C39A /* Foundation.framework */,
+				6003F58F195388D20070C39A /* CoreGraphics.framework */,
+				6003F591195388D20070C39A /* UIKit.framework */,
+				6003F5AF195388D20070C39A /* XCTest.framework */,
+				C15C4417FCC6BD133A2DD3AE /* Pods_BUKPhotoEditViewController_Example.framework */,
+				D453B2CA557F0B95E8926A7D /* Pods_BUKPhotoEditViewController_Tests.framework */,
 			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6003F593195388D20070C39A /* Example for BUKPhotoEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6385DD2F1C76EC98007F31B8 /* LaunchScreen.xib */,
+				6003F59C195388D20070C39A /* BUKAppDelegate.h */,
+				6003F59D195388D20070C39A /* BUKAppDelegate.m */,
+				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				6003F5A5195388D20070C39A /* BUKViewController.h */,
+				6003F5A6195388D20070C39A /* BUKViewController.m */,
+				6003F5A8195388D20070C39A /* Images.xcassets */,
+				6003F594195388D20070C39A /* Supporting Files */,
+			);
+			name = "Example for BUKPhotoEditViewController";
 			path = BUKPhotoEditViewController;
 			sourceTree = "<group>";
 		};
-		63DEFBB51BEF04250089746C /* Supporting Files */ = {
+		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				634D34031C5F2C8700AD3F50 /* 1.jpg */,
-				6330CCD41C52144E005FD450 /* 2.png */,
-				6339E1051C473BBC001AA9E5 /* CoreImage.framework */,
-				63DEFBB61BEF04250089746C /* main.m */,
+				6385DD2A1C76E9F7007F31B8 /* 1.jpg */,
+				6385DD2B1C76E9F7007F31B8 /* 2.png */,
+				6003F595195388D20070C39A /* BUKPhotoEditViewController-Info.plist */,
+				6003F596195388D20070C39A /* InfoPlist.strings */,
+				6003F599195388D20070C39A /* main.m */,
+				6003F59B195388D20070C39A /* BUKPhotoEditViewController-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		63DEFBCC1BEF042B0089746C /* BUKPhotoEditViewController */ = {
+		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6339E10D1C473CA3001AA9E5 /* Util */,
-				6339E10C1C473C88001AA9E5 /* Mosaic */,
-				6339E10B1C473C81001AA9E5 /* Clip */,
-				6339E10A1C473C7B001AA9E5 /* Filters */,
-				63DEFBCF1BEF04640089746C /* BUKPhotoEditViewController.h */,
-				63DEFBD01BEF04640089746C /* BUKPhotoEditViewController.m */,
+				6003F5BB195388D20070C39A /* Tests.m */,
+				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
-			name = BUKPhotoEditViewController;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		6003F5B6195388D20070C39A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5B7195388D20070C39A /* Tests-Info.plist */,
+				6003F5B8195388D20070C39A /* InfoPlist.strings */,
+				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				2BD95D32563C136991A9030D /* BUKPhotoEditViewController.podspec */,
+				711FD37A4404ADB1288E9563 /* README.md */,
+				8CE83EE4D0E77DD765F3D0E8 /* LICENSE */,
+			);
+			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63DEFBB11BEF04250089746C /* BUKPhotoEditViewController */ = {
+		6003F589195388D20070C39A /* BUKPhotoEditViewController_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63DEFBC91BEF04250089746C /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController_Example" */;
 			buildPhases = (
-				63DEFBAE1BEF04250089746C /* Sources */,
-				63DEFBAF1BEF04250089746C /* Frameworks */,
-				63DEFBB01BEF04250089746C /* Resources */,
+				D33C0560981372566374FF7E /* Check Pods Manifest.lock */,
+				6003F586195388D20070C39A /* Sources */,
+				6003F587195388D20070C39A /* Frameworks */,
+				6003F588195388D20070C39A /* Resources */,
+				912F0F93D01C17BB67F4DEDE /* Embed Pods Frameworks */,
+				85EEAC9C7D8F6B394FBD884A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BUKPhotoEditViewController;
+			name = BUKPhotoEditViewController_Example;
 			productName = BUKPhotoEditViewController;
-			productReference = 63DEFBB21BEF04250089746C /* BUKPhotoEditViewController.app */;
+			productReference = 6003F58A195388D20070C39A /* BUKPhotoEditViewController_Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		6003F5AD195388D20070C39A /* BUKPhotoEditViewController_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController_Tests" */;
+			buildPhases = (
+				50949AD82F23E92D53F2BC78 /* Check Pods Manifest.lock */,
+				6003F5AA195388D20070C39A /* Sources */,
+				6003F5AB195388D20070C39A /* Frameworks */,
+				6003F5AC195388D20070C39A /* Resources */,
+				0A2C04E235CDB6CD752D774E /* Embed Pods Frameworks */,
+				E6478C38228C99126884B542 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6003F5B4195388D20070C39A /* PBXTargetDependency */,
+			);
+			name = BUKPhotoEditViewController_Tests;
+			productName = BUKPhotoEditViewControllerTests;
+			productReference = 6003F5AE195388D20070C39A /* BUKPhotoEditViewController_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		63DEFBAA1BEF04250089746C /* Project object */ = {
+		6003F582195388D10070C39A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = lazy;
+				CLASSPREFIX = BUK;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = LazyClutch;
 				TargetAttributes = {
-					63DEFBB11BEF04250089746C = {
-						CreatedOnToolsVersion = 7.1;
+					6003F5AD195388D20070C39A = {
+						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
 			};
-			buildConfigurationList = 63DEFBAD1BEF04250089746C /* Build configuration list for PBXProject "BUKPhotoEditViewController" */;
+			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "BUKPhotoEditViewController" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -221,75 +269,184 @@
 				en,
 				Base,
 			);
-			mainGroup = 63DEFBA91BEF04250089746C;
-			productRefGroup = 63DEFBB31BEF04250089746C /* Products */;
+			mainGroup = 6003F581195388D10070C39A;
+			productRefGroup = 6003F58B195388D20070C39A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63DEFBB11BEF04250089746C /* BUKPhotoEditViewController */,
+				6003F589195388D20070C39A /* BUKPhotoEditViewController_Example */,
+				6003F5AD195388D20070C39A /* BUKPhotoEditViewController_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		63DEFBB01BEF04250089746C /* Resources */ = {
+		6003F588195388D20070C39A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63DEFBC51BEF04250089746C /* LaunchScreen.storyboard in Resources */,
-				63DEFBC21BEF04250089746C /* Assets.xcassets in Resources */,
-				6330CCD51C52144E005FD450 /* 2.png in Resources */,
-				63DEFBC01BEF04250089746C /* Main.storyboard in Resources */,
-				634D34041C5F2C8700AD3F50 /* 1.jpg in Resources */,
+				6385DD2C1C76E9F7007F31B8 /* 1.jpg in Resources */,
+				6385DD2E1C76EB31007F31B8 /* Main.storyboard in Resources */,
+				6385DD2D1C76E9F7007F31B8 /* 2.png in Resources */,
+				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				6385DD301C76EC98007F31B8 /* LaunchScreen.xib in Resources */,
+				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6003F5AC195388D20070C39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A2C04E235CDB6CD752D774E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50949AD82F23E92D53F2BC78 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		85EEAC9C7D8F6B394FBD884A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		912F0F93D01C17BB67F4DEDE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D33C0560981372566374FF7E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E6478C38228C99126884B542 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		63DEFBAE1BEF04250089746C /* Sources */ = {
+		6003F586195388D20070C39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63DEFBD91BEF04640089746C /* BUKPhotoMosaicViewController.m in Sources */,
-				638EBED51C520A23001DAC6E /* BUKPhotoFilter.m in Sources */,
-				6339E1101C473E72001AA9E5 /* BUKPhotoFiltersScrollView.m in Sources */,
-				6330CCD81C5215AC005FD450 /* UIColor+Theme.m in Sources */,
-				63DEFBBD1BEF04250089746C /* ViewController.m in Sources */,
-				63DEFBBA1BEF04250089746C /* AppDelegate.m in Sources */,
-				6339E1131C474DDA001AA9E5 /* BUKPhotoFilterView.m in Sources */,
-				63DEFBD81BEF04640089746C /* BUKPhotoEditViewController.m in Sources */,
-				637E02381C5CE3E90057777B /* LCMosaicImageView.m in Sources */,
-				63DEFBDB1BEF04640089746C /* UIColor+hex.m in Sources */,
-				638EBED81C520DB5001DAC6E /* UIImage+Crop.m in Sources */,
-				63DEFBD71BEF04640089746C /* BUKPhotoClipViewController.m in Sources */,
-				63DEFBB71BEF04250089746C /* main.m in Sources */,
+				6003F59E195388D20070C39A /* BUKAppDelegate.m in Sources */,
+				6003F5A7195388D20070C39A /* BUKViewController.m in Sources */,
+				6003F59A195388D20070C39A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6003F5AA195388D20070C39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6003F589195388D20070C39A /* BUKPhotoEditViewController_Example */;
+			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		63DEFBBE1BEF04250089746C /* Main.storyboard */ = {
+		6003F596195388D20070C39A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				63DEFBBF1BEF04250089746C /* Base */,
+				6003F597195388D20070C39A /* en */,
 			);
-			name = Main.storyboard;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		63DEFBC31BEF04250089746C /* LaunchScreen.storyboard */ = {
+		6003F5B8195388D20070C39A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				63DEFBC41BEF04250089746C /* Base */,
+				6003F5B9195388D20070C39A /* en */,
 			);
-			name = LaunchScreen.storyboard;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		63DEFBC71BEF04250089746C /* Debug */ = {
+		6003F5BD195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -304,35 +461,32 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		63DEFBC81BEF04250089746C /* Release */ = {
+		6003F5BE195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -347,74 +501,141 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		63DEFBCA1BEF04250089746C /* Debug */ = {
+		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13853EB4E92DF3122E44D1B0 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = BUKPhotoEditViewController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baixing.lazy.BUKPhotoEditViewController;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BUKPhotoEditViewController/BUKPhotoEditViewController-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"${PODS_ROOT}/Headers/**",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BUKPhotoEditViewController/BUKPhotoEditViewController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.baixing.BUKPhotoEditViewController-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		63DEFBCB1BEF04250089746C /* Release */ = {
+		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13F40B79E17CFBDA3288DF15 /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = BUKPhotoEditViewController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baixing.lazy.BUKPhotoEditViewController;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BUKPhotoEditViewController/BUKPhotoEditViewController-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"${PODS_ROOT}/Headers/**",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BUKPhotoEditViewController/BUKPhotoEditViewController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.baixing.BUKPhotoEditViewController-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6003F5C3195388D20070C39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBDC52B5E9801BA88F37FEA3 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BUKPhotoEditViewController_Example.app/BUKPhotoEditViewController_Example";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		6003F5C4195388D20070C39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03DE60ACFB403902E5A85DFF /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BUKPhotoEditViewController_Example.app/BUKPhotoEditViewController_Example";
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63DEFBAD1BEF04250089746C /* Build configuration list for PBXProject "BUKPhotoEditViewController" */ = {
+		6003F585195388D10070C39A /* Build configuration list for PBXProject "BUKPhotoEditViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				63DEFBC71BEF04250089746C /* Debug */,
-				63DEFBC81BEF04250089746C /* Release */,
+				6003F5BD195388D20070C39A /* Debug */,
+				6003F5BE195388D20070C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63DEFBC91BEF04250089746C /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				63DEFBCA1BEF04250089746C /* Debug */,
-				63DEFBCB1BEF04250089746C /* Release */,
+				6003F5C0195388D20070C39A /* Debug */,
+				6003F5C1195388D20070C39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6003F5C3195388D20070C39A /* Debug */,
+				6003F5C4195388D20070C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 63DEFBAA1BEF04250089746C /* Project object */;
+	rootObject = 6003F582195388D10070C39A /* Project object */;
 }

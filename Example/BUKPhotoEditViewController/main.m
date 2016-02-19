@@ -2,15 +2,16 @@
 //  main.m
 //  BUKPhotoEditViewController
 //
-//  Created by lazy on 15/11/8.
-//  Copyright © 2015年 lazy. All rights reserved.
+//  Created by LazyClutch on 02/19/2016.
+//  Copyright (c) 2016 LazyClutch. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "AppDelegate.h"
+@import UIKit;
+#import "BUKAppDelegate.h"
 
-int main(int argc, char * argv[]) {
+int main(int argc, char * argv[])
+{
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([BUKAppDelegate class]));
     }
 }
