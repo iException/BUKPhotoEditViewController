@@ -70,8 +70,6 @@ static const CGFloat kButtonWidth = 24.0f;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    [self.navigationItem setHidesBackButton:NO];
 }
 
 #pragma mark - event response -

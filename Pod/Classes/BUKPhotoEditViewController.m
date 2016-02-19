@@ -19,7 +19,6 @@
 @interface BUKPhotoEditViewController () <BUKPhotoClipViewControllerDelegate, BUKPhotoMosaicViewControllerDelegate, UIAlertViewDelegate, BUKPhotoFiltersDelegate, BUKPhotoFiltersDataSource>
 
 @property (nonatomic, strong) UIImageView *photoView;
-
 @property (nonatomic, strong) UIImage *originalPhoto;
 
 @property (nonatomic, strong) UIButton *rotateButton;
@@ -36,6 +35,8 @@
 @property (nonatomic, strong) UIView *bottomMaskView;
 
 @property (nonatomic, strong) BUKPhotoFiltersScrollView *filtersScrollView;
+
+@property (nonatomic, assign) BOOL backBarButtonHidden;
 
 @end
 
@@ -86,6 +87,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
      @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
+    self.backBarButtonHidden = self.navigationItem.hidesBackButton;
     [self.navigationItem setHidesBackButton:YES];
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
@@ -96,9 +98,11 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [self.navigationItem setHidesBackButton:NO];
+    [super viewDidDisappear:animated];
+    
+    [self.navigationItem setHidesBackButton:self.backBarButtonHidden];
 }
 
 - (void)didReceiveMemoryWarning
