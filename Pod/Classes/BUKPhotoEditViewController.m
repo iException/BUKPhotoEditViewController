@@ -142,6 +142,8 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     UIImage *image = [UIImage imageWithCGImage:[self.photoView.image CGImage] scale:1.0f orientation:nextOrientation];
     self.photoView.image = image;
     self.photoView.center = [self imageCenter];
+    
+    [self.filtersScrollView reloadData];
 }
 
 - (void)mosaic:(id)sender
