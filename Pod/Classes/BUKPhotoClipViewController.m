@@ -10,7 +10,7 @@
 #import "UIColor+Theme.h"
 #import "UIImage+Crop.h"
 
-@interface BUKPhotoClipViewController (){
+@interface BUKPhotoClipViewController () <UIGestureRecognizerDelegate>{
     CGPoint initialPosition;
     CGPoint initialCenter;
     
@@ -63,7 +63,7 @@ static const CGFloat kButtonWidth = 24.0f;
     [self.navigationItem setHidesBackButton:YES];
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
     }
 }
 
@@ -155,6 +155,12 @@ static const CGFloat kButtonWidth = 24.0f;
 }
 
 #pragma mark - delegate -
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return NO;
+}
+
 #pragma mark - private -
 
 - (UIImage *)clipPhoto

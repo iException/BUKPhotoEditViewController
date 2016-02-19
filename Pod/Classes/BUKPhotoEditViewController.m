@@ -16,7 +16,7 @@
 
 #define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width/414.0
 
-@interface BUKPhotoEditViewController () <BUKPhotoClipViewControllerDelegate, BUKPhotoMosaicViewControllerDelegate, UIAlertViewDelegate, BUKPhotoFiltersDelegate, BUKPhotoFiltersDataSource>
+@interface BUKPhotoEditViewController () <BUKPhotoClipViewControllerDelegate, BUKPhotoMosaicViewControllerDelegate, UIAlertViewDelegate, BUKPhotoFiltersDelegate, BUKPhotoFiltersDataSource, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIImageView *photoView;
 @property (nonatomic, strong) UIImage *originalPhoto;
@@ -91,7 +91,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     [self.navigationItem setHidesBackButton:YES];
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
     }
     
     [self layoutFrame];
@@ -248,6 +248,13 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     UIImage *filteredImage = [photoFiltersScrollView filteredImageAtIndex:index];
     self.photoView.image = filteredImage;
+}
+
+#pragma mark - UIGestureRecognizer Delegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return NO;
 }
 
 #pragma mark - private -

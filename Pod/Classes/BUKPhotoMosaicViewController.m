@@ -14,7 +14,7 @@
 #define InsetSquare(padding) UIEdgeInsetsMake(padding, padding, padding, padding)
 #define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width/414.0
 
-@interface BUKPhotoMosaicViewController () <LCMosaicImageViewDelegate>
+@interface BUKPhotoMosaicViewController () <LCMosaicImageViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) LCMosaicImageView *photoView;
 @property (nonatomic, strong) UIImage *lastMosaicImage;
@@ -82,7 +82,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
     [self.navigationItem setHidesBackButton:YES];
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
     }
 }
 
@@ -137,6 +137,11 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 - (void)imageViewDidMosaicImage:(LCMosaicImageView *)imageView
 {
     self.lastMosaicImage = nil;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return NO;
 }
 
 #pragma mark - private -
