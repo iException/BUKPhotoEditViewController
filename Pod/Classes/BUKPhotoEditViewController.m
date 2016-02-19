@@ -99,10 +99,6 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationItem setHidesBackButton:NO];
-    
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-    }
 }
 
 - (void)didReceiveMemoryWarning

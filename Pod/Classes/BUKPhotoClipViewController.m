@@ -60,9 +60,18 @@ static const CGFloat kButtonWidth = 24.0f;
     [super viewWillAppear:animated];
     [self layoutFrame];
     
+    [self.navigationItem setHidesBackButton:YES];
+    
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.navigationItem setHidesBackButton:NO];
 }
 
 #pragma mark - event response -

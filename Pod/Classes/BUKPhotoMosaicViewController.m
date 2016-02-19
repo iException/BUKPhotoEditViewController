@@ -79,9 +79,18 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 {
     [super viewWillAppear:animated];
     
+    [self.navigationItem setHidesBackButton:YES];
+    
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.navigationItem setHidesBackButton:NO];
 }
 
 #pragma mark - event response -
