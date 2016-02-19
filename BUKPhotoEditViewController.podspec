@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author   = { 'Lazy Clutch' => 'lr_5146@163.com' }
   s.source   = { :git => 'https://github.com/iException/BUKPhotoEditViewController.git', :tag => '0.0.8' }
   s.platform = :ios, '6.0'
-  s.source_files = 'Pod/**/*.{h,m}'
+  s.source_files = 'Pod/Classes/**/*.{h,m}'
   s.resource     = 'Pod/Classes/Assets/**/*.png'
   s.frameworks = 'UIKit', 'Foundation'
   s.requires_arc = true
