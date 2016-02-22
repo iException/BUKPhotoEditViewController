@@ -249,7 +249,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 - (void)buk_photoFiltersScrollView:(BUKPhotoFiltersScrollView *)photoFiltersScrollView didSelectPhotoFilterAtIndex:(NSInteger)index
 {
     UIImage *filteredImage = [photoFiltersScrollView filteredImageAtIndex:index];
-    self.photoView.image = filteredImage;
+    self.photoView.image = [UIImage imageWithCGImage:[filteredImage CGImage] scale:1.0f orientation:self.photoView.image.imageOrientation];
 }
 
 #pragma mark - UIGestureRecognizer Delegate
