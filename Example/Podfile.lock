@@ -1,5 +1,5 @@
 PODS:
-  - BUKPhotoEditViewController (0.1.0)
+  - BUKPhotoEditViewController (0.0.8)
 
 DEPENDENCIES:
   - BUKPhotoEditViewController (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BUKPhotoEditViewController: 952b822790b49a898145d24643f3479212f30495
+  BUKPhotoEditViewController: 71198decf336e56f545a6b2ddf7d9c4862d6bd1c
 
 COCOAPODS: 0.39.0
