@@ -304,9 +304,9 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
     
     self.filtersScrollView.frame = CGRectMake(0, self.rotateButton.frame.origin.y - kFilterScrollViewHeight * SCREEN_FACTOR - 10, screenSize.width, kFilterScrollViewHeight * SCREEN_FACTOR);
     
-    [self resetFrame];
     self.photoView.clipsToBounds = YES;
     self.photoView.contentMode = UIViewContentModeScaleAspectFit;
+    [self resetFrame];
     self.photoView.center = [self imageCenter];
     
     [self.filtersScrollView reloadData];

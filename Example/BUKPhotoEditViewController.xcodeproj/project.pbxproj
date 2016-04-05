@@ -20,10 +20,9 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		6385DD2C1C76E9F7007F31B8 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385DD2A1C76E9F7007F31B8 /* 1.jpg */; };
-		6385DD2D1C76E9F7007F31B8 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6385DD2B1C76E9F7007F31B8 /* 2.png */; };
 		6385DD2E1C76EB31007F31B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		6385DD301C76EC98007F31B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6385DD2F1C76EC98007F31B8 /* LaunchScreen.xib */; };
+		63E356211CB35AF1003E1E35 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63E356201CB35AF1003E1E35 /* 1.jpg */; };
 		8961BCA70AAB52CA41AB43B8 /* Pods_BUKPhotoEditViewController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D453B2CA557F0B95E8926A7D /* Pods_BUKPhotoEditViewController_Tests.framework */; };
 		8F7BC699BC4D4BFDAE078CC7 /* Pods_BUKPhotoEditViewController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15C4417FCC6BD133A2DD3AE /* Pods_BUKPhotoEditViewController_Example.framework */; };
 /* End PBXBuildFile section */
@@ -62,9 +61,8 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		6385DD2A1C76E9F7007F31B8 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		6385DD2B1C76E9F7007F31B8 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		6385DD2F1C76EC98007F31B8 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		63E356201CB35AF1003E1E35 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		711FD37A4404ADB1288E9563 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8CE83EE4D0E77DD765F3D0E8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -163,8 +161,7 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6385DD2A1C76E9F7007F31B8 /* 1.jpg */,
-				6385DD2B1C76E9F7007F31B8 /* 2.png */,
+				63E356201CB35AF1003E1E35 /* 1.jpg */,
 				6003F595195388D20070C39A /* BUKPhotoEditViewController-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
@@ -285,12 +282,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6385DD2C1C76E9F7007F31B8 /* 1.jpg in Resources */,
 				6385DD2E1C76EB31007F31B8 /* Main.storyboard in Resources */,
-				6385DD2D1C76E9F7007F31B8 /* 2.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6385DD301C76EC98007F31B8 /* LaunchScreen.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				63E356211CB35AF1003E1E35 /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
