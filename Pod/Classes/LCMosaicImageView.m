@@ -169,10 +169,7 @@
                                  (double)self.strokeScale * scalar,
                                  (double)self.strokeScale * scalar);
 
-    UIImage *clipImage = [UIImage imageWithCGImage:
-                                      CGImageCreateWithImageInRect([self.mosaicImage CGImage], clipArea);
-                                             scale:self.originalImage.scale
-                                       orientation:self.mosaicImage.imageOrientation];
+    UIImage *clipImage = [UIImage imageWithCGImage:CGImageCreateWithImageInRect([self.mosaicImage CGImage], clipArea) scale:self.originalImage.scale orientation:self.mosaicImage.imageOrientation];
 
     UIImageView *imageView = [[UIImageView alloc] initWithImage:clipImage];
     imageView.frame = CGRectMake(0, 0, (double)self.strokeScale, (double)self.strokeScale);
