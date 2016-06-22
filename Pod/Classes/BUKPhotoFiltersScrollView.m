@@ -10,13 +10,15 @@
 #import "BUKPhotoFilterView.h"
 
 #define FILTER_VIEW_TAG 4000
-#define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width/414.0
+#define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width / 414.0
+
 
 @interface BUKPhotoFiltersScrollView ()
 
 @property (nonatomic, strong) UIImage *image;
 
 @end
+
 
 @implementation BUKPhotoFiltersScrollView
 
@@ -37,35 +39,35 @@ const static CGFloat kFilterItemWidth = 70.0f;
 - (void)reloadData
 {
     NSInteger count = [self filtersCount];
-    
+
     if (count <= 0) {
         return;
     }
-    
+
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
+
     NSInteger index = 0;
     while (index < count) {
         BUKPhotoFilterView *filterView = [self.dataSource buk_photoFiltersScrollView:self filterViewAtIndex:index];
         filterView.tag = FILTER_VIEW_TAG + index;
         [self addSubview:filterView];
-        
+
         filterView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [filterView addGestureRecognizer:tap];
-        
+
         BUKPhotoFilterView *lastFilterView = [self viewWithTag:FILTER_VIEW_TAG + index - 1];
-        
+
         if (!lastFilterView) {
             [filterView setFrame:CGRectMake(kFiltersLeadingMargin * SCREEN_FACTOR, kFiltersVerticalPadding * SCREEN_FACTOR, kFilterItemWidth * SCREEN_FACTOR, self.frame.size.height - 2 * kFiltersVerticalPadding * SCREEN_FACTOR)];
         } else {
             [filterView setFrame:CGRectMake((kFiltersLeadingMargin + index * (kFiltersHorizontalPadding + kFilterItemWidth)) * SCREEN_FACTOR, kFiltersVerticalPadding * SCREEN_FACTOR, kFilterItemWidth * SCREEN_FACTOR, self.frame.size.height - 2 * kFiltersVerticalPadding * SCREEN_FACTOR)];
         }
-        
+
         [filterView generateFilter];
         index++;
     }
-    
+
     [self setContentSize:CGSizeMake((kFiltersLeadingMargin * 2 + (count - 1) * kFiltersHorizontalPadding + count * kFilterItemWidth) * SCREEN_FACTOR, self.frame.size.height * SCREEN_FACTOR)];
 }
 

@@ -18,6 +18,7 @@
 
 @end
 
+
 @interface BUKPhotoEditViewController : UIViewController
 
 - (instancetype)initWithPhoto:(UIImage *)photo;
@@ -25,4 +26,3 @@
 @property (weak, nonatomic) id<BUKPhotoEditViewControllerDelegate> delegate;
 
 @end
-

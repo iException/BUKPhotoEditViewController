@@ -17,6 +17,7 @@
 
 @end
 
+
 @interface BUKPhotoMosaicViewController : UIViewController
 
 - (instancetype)initWithPhoto:(UIImage *)photo;

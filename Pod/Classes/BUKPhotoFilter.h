@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface BUKPhotoFilter : NSObject
 
 + (UIImage *)filterImageWithImage:(UIImage *)image filter:(CIFilter *)filter;

@@ -10,10 +10,12 @@
 #import "UIColor+Theme.h"
 #import "UIImage+Crop.h"
 
-@interface BUKPhotoClipViewController () <UIGestureRecognizerDelegate>{
+
+@interface BUKPhotoClipViewController () <UIGestureRecognizerDelegate>
+{
     CGPoint initialPosition;
     CGPoint initialCenter;
-    
+
     CGRect currentMaskRect;
 }
 
@@ -30,6 +32,7 @@
 @property (nonatomic, strong) CAShapeLayer *transparentLayer;
 
 @end
+
 
 @implementation BUKPhotoClipViewController
 
@@ -59,9 +62,9 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     [super viewWillAppear:animated];
     [self layoutFrame];
-    
+
     [self.navigationItem setHidesBackButton:YES];
-    
+
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.delegate = self;
     }
@@ -86,21 +89,21 @@ static const CGFloat kButtonWidth = 24.0f;
     self.clipView.hidden = YES;
     UIImage *image = [self clipPhoto];
     self.photoView.transform = CGAffineTransformIdentity;
-    
+
     [self.delegate photoClipViewController:self didFinishEditingPhoto:image];
 }
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)pinch
 {
     self.photoView.transform = CGAffineTransformScale(self.photoView.transform, pinch.scale, pinch.scale);
-    
+
     if (pinch.state == UIGestureRecognizerStateEnded) {
         if (self.photoView.transform.d > kImagePinchMaxScale) {
             [UIView animateWithDuration:0.5f animations:^{
                 self.photoView.transform = CGAffineTransformMake(kImagePinchMaxScale, 0, 0, kImagePinchMaxScale, 0, 0);
             } completion:^(BOOL finished) {
                 CGPoint newOriginPoint = [self originForCurrentPhotoView];
-                
+
                 [UIView animateWithDuration:0.2f animations:^{
                     self.photoView.frame = CGRectMake(newOriginPoint.x, newOriginPoint.y, self.photoView.frame.size.width, self.photoView.frame.size.height);
                 }];
@@ -110,20 +113,20 @@ static const CGFloat kButtonWidth = 24.0f;
                 self.photoView.transform = CGAffineTransformMake(kImagePinchMinScale, 0, 0, kImagePinchMinScale, 0, 0);
             } completion:^(BOOL finished) {
                 CGPoint newOriginPoint = [self originForCurrentPhotoView];
-                
+
                 [UIView animateWithDuration:0.2f animations:^{
                     self.photoView.frame = CGRectMake(newOriginPoint.x, newOriginPoint.y, self.photoView.frame.size.width, self.photoView.frame.size.height);
                 }];
             }];
         } else {
             CGPoint newOriginPoint = [self originForCurrentPhotoView];
-            
+
             [UIView animateWithDuration:0.2f animations:^{
                 self.photoView.frame = CGRectMake(newOriginPoint.x, newOriginPoint.y, self.photoView.frame.size.width, self.photoView.frame.size.height);
             }];
         }
     }
-    
+
     pinch.scale = 1;
 }
 
@@ -131,15 +134,13 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     CGPoint point = [pan locationInView:self.view];
     if (pan.state == UIGestureRecognizerStateBegan) {
-        
     } else if (pan.state == UIGestureRecognizerStateChanged) {
         CGFloat deltaX = point.x - initialPosition.x;
         CGFloat deltaY = point.y - initialPosition.y;
         self.photoView.center = CGPointMake(deltaX + initialCenter.x, deltaY + initialCenter.y);
     } else if (pan.state == UIGestureRecognizerStateEnded) {
-        
         CGPoint newOriginPoint = [self originForCurrentPhotoView];
-        
+
         [UIView animateWithDuration:0.2f animations:^{
             self.photoView.frame = CGRectMake(newOriginPoint.x, newOriginPoint.y, self.photoView.frame.size.width, self.photoView.frame.size.height);
         }];
@@ -176,7 +177,7 @@ static const CGFloat kButtonWidth = 24.0f;
     CGFloat clipOriginY = (self.photoView.frame.origin.y > currentMaskRect.origin.y) ? self.photoView.frame.origin.y : currentMaskRect.origin.y;
     CGFloat clipWidth = (self.photoView.frame.size.width < currentMaskRect.size.width) ? self.photoView.frame.size.width : currentMaskRect.size.width;
     CGFloat clipHeight = (self.photoView.frame.size.height < currentMaskRect.size.height) ? self.photoView.frame.size.height : currentMaskRect.size.height;
-    
+
     CGRect photoRect = self.photoView.frame;
     CGFloat originXPercentage = (clipOriginx - photoRect.origin.x) / photoRect.size.width;
     if (originXPercentage < 0) {
@@ -194,10 +195,10 @@ static const CGFloat kButtonWidth = 24.0f;
     if (heightPercentage > 1) {
         heightPercentage = 1;
     }
-    
+
     CGSize imageSize = self.photoView.image.size;
     CGRect clipArea = CGRectMake(originXPercentage * imageSize.width, originYPercentage * imageSize.height, widthPercentage * imageSize.width, heightPercentage * imageSize.height);
-    
+
     return clipArea;
 }
 
@@ -205,9 +206,9 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     self.navigationItem.title = @"裁剪";
     self.view.backgroundColor = [UIColor blackColor];
-    
+
     self.photoView.image = photo;
-    
+
     [self.view addSubview:self.photoView];
     [self.view addSubview:self.clipView];
     [self.view addSubview:self.maskView];
@@ -223,7 +224,7 @@ static const CGFloat kButtonWidth = 24.0f;
     } else {
         self.photoView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width * heightByWidth);
     }
-    
+
     self.photoView.clipsToBounds = YES;
     self.photoView.center = [self imageCenter];
 }
@@ -231,14 +232,14 @@ static const CGFloat kButtonWidth = 24.0f;
 - (void)layoutFrame
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    
+
     self.clipView.frame = CGRectMake(0, 0, screenSize.width, screenSize.width);
     self.clipView.center = [self imageCenter];
     self.maskView.frame = CGRectMake(0, screenSize.height - kImageBottom, screenSize.width, kImageBottom);
-    
+
     self.confirmButton.frame = CGRectMake(screenSize.width - KButtonToLeft - kButtonWidth, screenSize.height - kButtonToBottom - kButtonWidth, kButtonWidth, kButtonWidth);
     self.cancelButton.frame = CGRectMake(KButtonToLeft, screenSize.height - kButtonToBottom - kButtonWidth, kButtonWidth, kButtonWidth);
-    
+
     [self makeTransparentLayer];
 }
 
@@ -248,10 +249,10 @@ static const CGFloat kButtonWidth = 24.0f;
     CGFloat exceedLeft = (self.photoView.frame.origin.x > 0) ? 0 : self.photoView.frame.origin.x;
     CGFloat exceedDown = ((self.photoView.frame.origin.y + self.photoView.frame.size.height) < currentMaskRect.origin.y + currentMaskRect.size.height) ? currentMaskRect.origin.y + currentMaskRect.size.height - self.photoView.frame.size.height : self.photoView.frame.origin.y;
     CGFloat exceedRight = ((self.photoView.frame.origin.x + self.photoView.frame.size.width) < self.view.frame.size.width) ? (self.view.frame.size.width - self.photoView.frame.size.width) : self.photoView.frame.origin.x;
-    
+
     CGFloat newOriginX;
     CGFloat newOriginY;
-    
+
     if ((exceedUp == currentMaskRect.origin.y && exceedDown == (currentMaskRect.origin.y + currentMaskRect.size.height - self.photoView.frame.size.height)) || self.photoView.frame.size.height < currentMaskRect.size.height) {
         newOriginY = [self imageCenter].y - self.photoView.frame.size.height / 2;
     } else {
@@ -271,7 +272,7 @@ static const CGFloat kButtonWidth = 24.0f;
     } else {
         newOriginX = self.photoView.frame.origin.x;
     }
-    
+
     return CGPointMake(newOriginX, newOriginY);
 }
 
@@ -286,45 +287,45 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     [self.blackLayer removeFromSuperlayer];
     [self.transparentLayer removeFromSuperlayer];
-    
+
     CAShapeLayer *maskWithHole = [CAShapeLayer layer];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    
+
     // Both frames are defined in the same coordinate system
     CGRect biggerRect = CGRectMake(0, 0, screenSize.width, screenSize.height - kImageBottom);
     CGRect smallerRect = self.clipView.frame;
     currentMaskRect = smallerRect;
-    
+
     UIBezierPath *maskPath = [UIBezierPath bezierPath];
     [maskPath moveToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMinY(biggerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMaxY(biggerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(biggerRect), CGRectGetMaxY(biggerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(biggerRect), CGRectGetMinY(biggerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMinY(biggerRect))];
-    
+
     [maskPath moveToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMinY(smallerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMaxY(smallerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(smallerRect), CGRectGetMaxY(smallerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(smallerRect), CGRectGetMinY(smallerRect))];
     [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMinY(smallerRect))];
-    
+
     [maskWithHole setPath:[maskPath CGPath]];
     [maskWithHole setFillRule:kCAFillRuleEvenOdd];
     [maskWithHole setFillColor:[[UIColor blackColor] CGColor]];
     maskWithHole.opacity = 0.4f;
-    
+
     self.blackLayer = maskWithHole;
     [self.view.layer addSublayer:self.blackLayer];
-    
+
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.clipView.frame];
     [path setUsesEvenOddFillRule:YES];
-    
+
     CAShapeLayer *fillLayer = [CAShapeLayer layer];
     fillLayer.path = path.CGPath;
     fillLayer.fillRule = kCAFillRuleEvenOdd;
     fillLayer.fillColor = [UIColor clearColor].CGColor;
     fillLayer.opacity = 0.0;
-    
+
     self.transparentLayer = fillLayer;
     [self.view.layer addSublayer:self.transparentLayer];
 }
@@ -355,16 +356,18 @@ static const CGFloat kButtonWidth = 24.0f;
     return _maskView;
 }
 
-- (UIImageView *)clipView {
-	if(_clipView == nil) {
-		_clipView = [[UIImageView alloc] init];
+- (UIImageView *)clipView
+{
+    if (_clipView == nil) {
+        _clipView = [[UIImageView alloc] init];
         _clipView.image = [UIImage imageNamed:@"qingquan_clip_bound"];
-	}
-	return _clipView;
+    }
+    return _clipView;
 }
 
-- (UIButton *)confirmButton {
-    if(_confirmButton == nil) {
+- (UIButton *)confirmButton
+{
+    if (_confirmButton == nil) {
         _confirmButton = [[UIButton alloc] init];
         [_confirmButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
@@ -372,8 +375,9 @@ static const CGFloat kButtonWidth = 24.0f;
     return _confirmButton;
 }
 
-- (UIButton *)cancelButton {
-    if(_cancelButton == nil) {
+- (UIButton *)cancelButton
+{
+    if (_cancelButton == nil) {
         _cancelButton = [[UIButton alloc] init];
         [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];

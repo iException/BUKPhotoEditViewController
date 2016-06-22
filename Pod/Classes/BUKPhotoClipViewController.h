@@ -17,6 +17,7 @@
 
 @end
 
+
 @interface BUKPhotoClipViewController : UIViewController
 
 - (instancetype)initWithPhoto:(UIImage *)photo;

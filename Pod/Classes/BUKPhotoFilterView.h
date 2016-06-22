@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface BUKPhotoFilterView : UIView
 
 - (instancetype)initWithPhoto:(UIImage *)photo name:(NSString *)name filter:(CIFilter *)filter;

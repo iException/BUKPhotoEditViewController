@@ -12,6 +12,7 @@
 #import "UIImage+Crop.h"
 #import <CoreImage/CoreImage.h>
 
+
 @interface BUKPhotoFilterView ()
 
 @property (nonatomic, strong) UIImage *image;
@@ -21,6 +22,7 @@
 @property (nonatomic) UILabel *namelabel;
 
 @end
+
 
 @implementation BUKPhotoFilterView
 
@@ -46,7 +48,7 @@ const static CGFloat kImageToLabelVerticalHeight = 9.0f;
 
     self.imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - kLabelHeight - kImageToLabelVerticalHeight);
     self.namelabel.frame = CGRectMake(0, self.imageView.frame.size.height + kImageToLabelVerticalHeight, self.frame.size.width, kLabelHeight);
-    
+
     [self generateFilterView];
 }
 
