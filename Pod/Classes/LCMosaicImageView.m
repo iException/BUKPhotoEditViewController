@@ -8,7 +8,6 @@
 
 #import "LCMosaicImageView.h"
 
-
 @interface LCMosaicImageView ()
 
 @property (nonatomic, strong) UIImage *originalImage;
@@ -19,9 +18,7 @@
 
 @end
 
-
 @implementation LCMosaicImageView
-
 
 #pragma mark - initializer
 
@@ -208,7 +205,7 @@
     for (int i = 0; i <= width / level; i++) {
         for (int j = 0; j <= height / level; j++) {
             NSInteger byteIndex = (bytesPerRow * j * level) + i * level * bytesPerPixel;
-            if (byteIndex > maxOffset) continue;
+            if (byteIndex >= maxOffset) continue;
             CGFloat red = (CGFloat)((rawData[byteIndex + 1] * 1.0) / 255.0);
             CGFloat green = (CGFloat)((rawData[byteIndex + 2] * 1.0) / 255.0);
             CGFloat blue = (CGFloat)((rawData[byteIndex + 3] * 1.0) / 255.0);
@@ -255,7 +252,6 @@
     UIGraphicsEndImageContext();
     return imageNoRotation;
 }
-
 
 #pragma mark - setter & getter
 
