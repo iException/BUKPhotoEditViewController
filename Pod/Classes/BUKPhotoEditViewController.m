@@ -38,6 +38,7 @@
 @property (nonatomic, strong) BUKPhotoFiltersScrollView *filtersScrollView;
 
 @property (nonatomic, assign) BOOL backBarButtonHidden;
+@property (nonatomic, strong) UIColor *tintColor;
 
 @end
 
@@ -68,6 +69,16 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     self = [super init];
     if (self) {
+        [self setupViewsWithPhoto:photo];
+    }
+    return self;
+}
+
+- (instancetype)initWithPhoto:(UIImage *)photo tintColor:(UIColor *)tintColor
+{
+    self = [super init];
+    if (self) {
+        _tintColor = tintColor;
         [self setupViewsWithPhoto:photo];
     }
     return self;
@@ -149,7 +160,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 
 - (void)mosaic:(id)sender
 {
-    BUKPhotoMosaicViewController *mosaicViewController = [[BUKPhotoMosaicViewController alloc] initWithPhoto:self.photoView.image];
+    BUKPhotoMosaicViewController *mosaicViewController = [[BUKPhotoMosaicViewController alloc] initWithPhoto:self.photoView.image tintColor:self.tintColor];
     mosaicViewController.delegate = self;
     [self.navigationController pushViewController:mosaicViewController animated:YES];
 }
@@ -327,6 +338,14 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 
 #pragma mark - getter & setter -
 
+- (UIColor *)tintColor
+{
+    if (!_tintColor) {
+        _tintColor = [UIColor colorWithRed:0.27 green:0.8 blue:1 alpha:1];
+    }
+    return _tintColor;
+}
+
 - (UIImageView *)photoView
 {
     if (!_photoView) {
@@ -339,7 +358,9 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_rotateButton) {
         _rotateButton = [[UIButton alloc] init];
-        [_rotateButton setImage:[UIImage imageNamed:@"qingquan_rotate_button"] forState:UIControlStateNormal];
+        [_rotateButton setImage:[[UIImage imageNamed:@"qingquan_rotate_button"]
+                                 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]forState:UIControlStateNormal];
+        [_rotateButton setTintColor:self.tintColor];
         [_rotateButton addTarget:self action:@selector(rotate:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rotateButton;
@@ -349,7 +370,9 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_mosaicButton) {
         _mosaicButton = [[UIButton alloc] init];
-        [_mosaicButton setImage:[UIImage imageNamed:@"qingquan_mosaic_button"] forState:UIControlStateNormal];
+        [_mosaicButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_button"]
+                                 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_mosaicButton setTintColor:self.tintColor];
         [_mosaicButton addTarget:self action:@selector(mosaic:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _mosaicButton;
@@ -359,7 +382,9 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_clipButton) {
         _clipButton = [[UIButton alloc] init];
-        [_clipButton setImage:[UIImage imageNamed:@"qingquan_clip_button"] forState:UIControlStateNormal];
+        [_clipButton setImage:[[UIImage imageNamed:@"qingquan_clip_button"]
+                               imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_clipButton setTintColor:self.tintColor];
         [_clipButton addTarget:self action:@selector(clip:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _clipButton;

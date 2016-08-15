@@ -21,6 +21,7 @@
 @interface BUKPhotoMosaicViewController : UIViewController
 
 - (instancetype)initWithPhoto:(UIImage *)photo;
+- (instancetype)initWithPhoto:(UIImage *)photo tintColor:(UIColor *)tintColor;
 
 @property (weak, nonatomic) id<BUKPhotoMosaicViewControllerDelegate> delegate;
 

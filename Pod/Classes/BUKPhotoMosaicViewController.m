@@ -36,6 +36,7 @@
 @property (nonatomic, strong) UILabel *redoLabel;
 
 @property (nonatomic, strong) UIButton *lastSelectedButton;
+@property (nonatomic, strong) UIColor *tintColor;
 
 @end
 
@@ -54,6 +55,22 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 
 #pragma mark - initializer -
 
+- (instancetype)initWithPhoto:(UIImage *)photo tintColor:(UIColor *)tintColor
+{
+    self = [super init];
+    if (self) {
+        _tintColor = tintColor;
+        _photo = photo;
+        [self setupViewsWithPhoto:photo];
+
+        self.lastSelectedButton = self.strokeMediumButton;
+        [self.lastSelectedButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_fill"]
+                                           imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        self.photoView.strokeScale = self.lastSelectedButton.tag;
+    }
+    return self;
+}
+
 - (instancetype)initWithPhoto:(UIImage *)photo
 {
     self = [super init];
@@ -62,7 +79,8 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         [self setupViewsWithPhoto:photo];
 
         self.lastSelectedButton = self.strokeMediumButton;
-        [self.lastSelectedButton setImage:[UIImage imageNamed:@"qingquan_mosaic_fill"] forState:UIControlStateNormal];
+        [self.lastSelectedButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_fill"]
+                                           imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         self.photoView.strokeScale = self.lastSelectedButton.tag;
     }
     return self;
@@ -118,8 +136,10 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
     if ([self.lastSelectedButton isEqual:button]) {
         return;
     } else {
-        [button setImage:[UIImage imageNamed:@"qingquan_mosaic_fill"] forState:UIControlStateNormal];
-        [self.lastSelectedButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        [button setImage:[[UIImage imageNamed:@"qingquan_mosaic_fill"]
+                          imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [self.lastSelectedButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_empty"]
+                                           imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         self.lastSelectedButton = button;
     }
 }
@@ -216,12 +236,21 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 }
 
 #pragma mark - getter & setter -
+- (UIColor *)tintColor
+{
+    if (!_tintColor) {
+        _tintColor = [UIColor colorWithRed:0.27 green:0.8 blue:1 alpha:1];
+    }
+    return _tintColor;
+}
 
 - (UIButton *)redoButton
 {
     if (!_redoButton) {
         _redoButton = [[UIButton alloc] init];
-        [_redoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_redo"] forState:UIControlStateNormal];
+        [_redoButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_redo"]
+                               imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_redoButton setTintColor:self.tintColor];
         [_redoButton addTarget:self action:@selector(redo:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _redoButton;
@@ -231,7 +260,9 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 {
     if (!_undoButton) {
         _undoButton = [[UIButton alloc] init];
-        [_undoButton setImage:[UIImage imageNamed:@"qingquan_mosaic_undo"] forState:UIControlStateNormal];
+        [_undoButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_undo"]
+                               imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_undoButton setTintColor:self.tintColor];
         [_undoButton addTarget:self action:@selector(undo:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _undoButton;
@@ -243,7 +274,9 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         _strokeSmallButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeSmallButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeSmallButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeSmallButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        [_strokeSmallButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_empty"]
+                                      imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_strokeSmallButton setTintColor:self.tintColor];
         _strokeSmallButton.tag = LCStrokeScaleSmall;
         _strokeSmallButton.contentEdgeInsets = InsetSquare(10 * SCREEN_FACTOR);
         [_strokeSmallButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -257,7 +290,9 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         _strokeMediumButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeMediumButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeMediumButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeMediumButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        [_strokeMediumButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_empty"]
+                                      imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_strokeMediumButton setTintColor:self.tintColor];
         _strokeMediumButton.contentEdgeInsets = InsetSquare(10 * SCREEN_FACTOR);
         _strokeMediumButton.tag = LCStrokeScaleMedium;
         [_strokeMediumButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -271,7 +306,9 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         _strokeLargeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeLargeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeLargeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeLargeButton setImage:[UIImage imageNamed:@"qingquan_mosaic_empty"] forState:UIControlStateNormal];
+        [_strokeLargeButton setImage:[[UIImage imageNamed:@"qingquan_mosaic_empty"]
+                                       imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_strokeLargeButton setTintColor:self.tintColor];
         _strokeLargeButton.contentEdgeInsets = InsetSquare(10 * SCREEN_FACTOR);
         _strokeLargeButton.tag = LCStrokeScaleLarge;
         [_strokeLargeButton addTarget:self action:@selector(strokeTapped:) forControlEvents:UIControlEventTouchUpInside];

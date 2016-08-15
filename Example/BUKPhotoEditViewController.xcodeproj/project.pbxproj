@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0498CA6FF5BFC3E6B85E11CC /* libPods-BUKPhotoEditViewController_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FE50E8264B1A6D8C142BF3 /* libPods-BUKPhotoEditViewController_Tests.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -23,8 +24,7 @@
 		6385DD2E1C76EB31007F31B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		6385DD301C76EC98007F31B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6385DD2F1C76EC98007F31B8 /* LaunchScreen.xib */; };
 		63E356211CB35AF1003E1E35 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63E356201CB35AF1003E1E35 /* 1.jpg */; };
-		8961BCA70AAB52CA41AB43B8 /* Pods_BUKPhotoEditViewController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D453B2CA557F0B95E8926A7D /* Pods_BUKPhotoEditViewController_Tests.framework */; };
-		8F7BC699BC4D4BFDAE078CC7 /* Pods_BUKPhotoEditViewController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15C4417FCC6BD133A2DD3AE /* Pods_BUKPhotoEditViewController_Example.framework */; };
+		C2E59627775A830BE5EEE144 /* libPods-BUKPhotoEditViewController_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC0351A83452F4524B3B4E7 /* libPods-BUKPhotoEditViewController_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03DE60ACFB403902E5A85DFF /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		13853EB4E92DF3122E44D1B0 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		13F40B79E17CFBDA3288DF15 /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		16357C6D024CA1519C177EE8 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		196954F7B1B45FF33F464109 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		2BD95D32563C136991A9030D /* BUKPhotoEditViewController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BUKPhotoEditViewController.podspec; path = ../BUKPhotoEditViewController.podspec; sourceTree = "<group>"; };
+		43DB1FE632525C97375D65FB /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* BUKPhotoEditViewController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BUKPhotoEditViewController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,9 +66,9 @@
 		711FD37A4404ADB1288E9563 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8CE83EE4D0E77DD765F3D0E8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		C15C4417FCC6BD133A2DD3AE /* Pods_BUKPhotoEditViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BUKPhotoEditViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D453B2CA557F0B95E8926A7D /* Pods_BUKPhotoEditViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BUKPhotoEditViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBDC52B5E9801BA88F37FEA3 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A4FE50E8264B1A6D8C142BF3 /* libPods-BUKPhotoEditViewController_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BUKPhotoEditViewController_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5FE7AA2D88EEEF53D3C0AAC /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BUKPhotoEditViewController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		BFC0351A83452F4524B3B4E7 /* libPods-BUKPhotoEditViewController_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BUKPhotoEditViewController_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				8F7BC699BC4D4BFDAE078CC7 /* Pods_BUKPhotoEditViewController_Example.framework in Frameworks */,
+				C2E59627775A830BE5EEE144 /* libPods-BUKPhotoEditViewController_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,24 +90,13 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				8961BCA70AAB52CA41AB43B8 /* Pods_BUKPhotoEditViewController_Tests.framework in Frameworks */,
+				0498CA6FF5BFC3E6B85E11CC /* libPods-BUKPhotoEditViewController_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A03FB148554A8EBFB532FBA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				13853EB4E92DF3122E44D1B0 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */,
-				13F40B79E17CFBDA3288DF15 /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */,
-				DBDC52B5E9801BA88F37FEA3 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */,
-				03DE60ACFB403902E5A85DFF /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +105,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				0A03FB148554A8EBFB532FBA /* Pods */,
+				8ACB4553448E5D6D1D4F8BB7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,8 +125,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				C15C4417FCC6BD133A2DD3AE /* Pods_BUKPhotoEditViewController_Example.framework */,
-				D453B2CA557F0B95E8926A7D /* Pods_BUKPhotoEditViewController_Tests.framework */,
+				BFC0351A83452F4524B3B4E7 /* libPods-BUKPhotoEditViewController_Example.a */,
+				A4FE50E8264B1A6D8C142BF3 /* libPods-BUKPhotoEditViewController_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,6 +188,17 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		8ACB4553448E5D6D1D4F8BB7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				196954F7B1B45FF33F464109 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */,
+				A5FE7AA2D88EEEF53D3C0AAC /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */,
+				16357C6D024CA1519C177EE8 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */,
+				43DB1FE632525C97375D65FB /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,12 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController_Example" */;
 			buildPhases = (
-				D33C0560981372566374FF7E /* Check Pods Manifest.lock */,
+				3E295776C235BBD55C59F3C3 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				912F0F93D01C17BB67F4DEDE /* Embed Pods Frameworks */,
-				85EEAC9C7D8F6B394FBD884A /* Copy Pods Resources */,
+				526DB3D7ECE26705FF9399C0 /* [CP] Embed Pods Frameworks */,
+				E001D5BB3AAD258A0DFCABDB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,12 +226,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BUKPhotoEditViewController_Tests" */;
 			buildPhases = (
-				50949AD82F23E92D53F2BC78 /* Check Pods Manifest.lock */,
+				2C960E8ECB12817EAFA37DC2 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				0A2C04E235CDB6CD752D774E /* Embed Pods Frameworks */,
-				E6478C38228C99126884B542 /* Copy Pods Resources */,
+				766BCC57D20A8F96E5EF1AC8 /* [CP] Embed Pods Frameworks */,
+				44409CC1608AC619C06E3F84 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,29 +301,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A2C04E235CDB6CD752D774E /* Embed Pods Frameworks */ = {
+		2C960E8ECB12817EAFA37DC2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		50949AD82F23E92D53F2BC78 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,29 +316,44 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		85EEAC9C7D8F6B394FBD884A /* Copy Pods Resources */ = {
+		3E295776C235BBD55C59F3C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		912F0F93D01C17BB67F4DEDE /* Embed Pods Frameworks */ = {
+		44409CC1608AC619C06E3F84 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		526DB3D7ECE26705FF9399C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,34 +361,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D33C0560981372566374FF7E /* Check Pods Manifest.lock */ = {
+		766BCC57D20A8F96E5EF1AC8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E6478C38228C99126884B542 /* Copy Pods Resources */ = {
+		E001D5BB3AAD258A0DFCABDB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Tests/Pods-BUKPhotoEditViewController_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BUKPhotoEditViewController_Example/Pods-BUKPhotoEditViewController_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -517,7 +517,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13853EB4E92DF3122E44D1B0 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */;
+			baseConfigurationReference = 196954F7B1B45FF33F464109 /* Pods-BUKPhotoEditViewController_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -538,7 +538,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13F40B79E17CFBDA3288DF15 /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */;
+			baseConfigurationReference = A5FE7AA2D88EEEF53D3C0AAC /* Pods-BUKPhotoEditViewController_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -559,7 +559,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBDC52B5E9801BA88F37FEA3 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */;
+			baseConfigurationReference = 16357C6D024CA1519C177EE8 /* Pods-BUKPhotoEditViewController_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -583,7 +583,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03DE60ACFB403902E5A85DFF /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */;
+			baseConfigurationReference = 43DB1FE632525C97375D65FB /* Pods-BUKPhotoEditViewController_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

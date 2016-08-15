@@ -22,6 +22,7 @@
 @interface BUKPhotoEditViewController : UIViewController
 
 - (instancetype)initWithPhoto:(UIImage *)photo;
+- (instancetype)initWithPhoto:(UIImage *)photo tintColor:(UIColor *)tintColor;
 
 @property (weak, nonatomic) id<BUKPhotoEditViewControllerDelegate> delegate;
 
