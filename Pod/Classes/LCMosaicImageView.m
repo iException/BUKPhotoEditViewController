@@ -183,6 +183,9 @@
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     NSInteger level = mosaicLevel * [UIScreen mainScreen].scale;
     unsigned char *rawData = (unsigned char *)calloc(maxOffset, sizeof(unsigned char));
+    if (rawData == NULL) {
+        return image;
+    }
 
     NSUInteger bytesPerPixel = 4;
     NSUInteger bytesPerRow = bytesPerPixel * width;
@@ -196,11 +199,6 @@
     CGSize imageSize = image.size;
     UIGraphicsBeginImageContextWithOptions(imageSize, YES, 0);
     CGContextRef drawContext = UIGraphicsGetCurrentContext();
-
-    NSString *rawDataString = [NSString stringWithFormat:@"%s", rawData];
-    if (rawDataString.length == 0) {
-        return image;
-    }
 
     for (int i = 0; i <= width / level; i++) {
         for (int j = 0; j <= height / level; j++) {
@@ -216,6 +214,7 @@
     UIImage *mosaicedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     free(rawData);
+    rawData = NULL;
     return mosaicedImage;
 }
 
