@@ -8,7 +8,9 @@ Pod::Spec.new do |s|
   s.source   = { :git => 'https://github.com/iException/BUKPhotoEditViewController.git', :tag => '0.1.3' }
   s.platform = :ios, '6.0'
   s.source_files = 'Pod/Classes/**/*.{h,m}'
-  s.resource     = 'Pod/Assets/**/*.png'
+  s.resource_bundles = {
+    'BUKPhotoEditViewController' => ['Pod/Assets/*.png']
+  }
   s.frameworks = 'UIKit', 'Foundation'
   s.requires_arc = true
 end

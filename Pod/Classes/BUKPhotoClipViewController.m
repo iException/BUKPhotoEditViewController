@@ -9,7 +9,7 @@
 #import "BUKPhotoClipViewController.h"
 #import "UIColor+Theme.h"
 #import "UIImage+Crop.h"
-
+#import "UIImage+buk_image.h"
 
 @interface BUKPhotoClipViewController () <UIGestureRecognizerDelegate>
 {
@@ -32,7 +32,6 @@
 @property (nonatomic, strong) CAShapeLayer *transparentLayer;
 
 @end
-
 
 @implementation BUKPhotoClipViewController
 
@@ -360,7 +359,7 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     if (_clipView == nil) {
         _clipView = [[UIImageView alloc] init];
-        _clipView.image = [UIImage imageNamed:@"qingquan_clip_bound"];
+        _clipView.image = [UIImage buk_imageNamed:@"qingquan_clip_bound"];
     }
     return _clipView;
 }
@@ -369,7 +368,7 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     if (_confirmButton == nil) {
         _confirmButton = [[UIButton alloc] init];
-        [_confirmButton setImage:[UIImage imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
+        [_confirmButton setImage:[UIImage buk_imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmButton;
@@ -379,7 +378,7 @@ static const CGFloat kButtonWidth = 24.0f;
 {
     if (_cancelButton == nil) {
         _cancelButton = [[UIButton alloc] init];
-        [_cancelButton setImage:[UIImage imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
+        [_cancelButton setImage:[UIImage buk_imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;
