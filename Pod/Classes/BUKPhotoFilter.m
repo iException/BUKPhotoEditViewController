@@ -14,7 +14,7 @@
 + (UIImage *)filterImageWithImage:(UIImage *)image filter:(CIFilter *)filter
 {
     CIImage *ciImage = [[CIImage alloc] initWithImage:image];
-    CIContext *context = [CIContext contextWithOptions:kNilOptions];
+    CIContext *context = [CIContext context];
 
     [filter setDefaults];
     [filter setValue:ciImage forKey:kCIInputImageKey];

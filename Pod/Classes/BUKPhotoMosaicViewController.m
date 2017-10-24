@@ -10,7 +10,7 @@
 #import "LCMosaicImageView.h"
 #import "UIColor+hex.h"
 #import "UIColor+Theme.h"
-#import "UIImage+buk_image.h"
+#import "UIImage+BUKPhotoEditViewController.h"
 
 #define InsetSquare(padding) UIEdgeInsetsMake(padding, padding, padding, padding)
 #define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width / 414.0
@@ -63,7 +63,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         [self setupViewsWithPhoto:photo];
 
         self.lastSelectedButton = self.strokeMediumButton;
-        [self.lastSelectedButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_fill"]
+        [self.lastSelectedButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_fill"]
                                               imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                                  forState:UIControlStateNormal];
         self.photoView.strokeScale = self.lastSelectedButton.tag;
@@ -79,7 +79,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         [self setupViewsWithPhoto:photo];
 
         self.lastSelectedButton = self.strokeMediumButton;
-        [self.lastSelectedButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_fill"]
+        [self.lastSelectedButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_fill"]
                                               imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                                  forState:UIControlStateNormal];
         self.photoView.strokeScale = self.lastSelectedButton.tag;
@@ -137,10 +137,10 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
     if ([self.lastSelectedButton isEqual:button]) {
         return;
     } else {
-        [button setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_fill"]
+        [button setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_fill"]
                              imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                 forState:UIControlStateNormal];
-        [self.lastSelectedButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_empty"]
+        [self.lastSelectedButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_empty"]
                                               imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                                  forState:UIControlStateNormal];
         self.lastSelectedButton = button;
@@ -250,7 +250,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 {
     if (!_redoButton) {
         _redoButton = [[UIButton alloc] init];
-        [_redoButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_redo"]
+        [_redoButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_redo"]
                                   imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                      forState:UIControlStateNormal];
         [_redoButton setTintColor:self.tintColor];
@@ -263,7 +263,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 {
     if (!_undoButton) {
         _undoButton = [[UIButton alloc] init];
-        [_undoButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_undo"]
+        [_undoButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_undo"]
                                   imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                      forState:UIControlStateNormal];
         [_undoButton setTintColor:self.tintColor];
@@ -278,7 +278,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         _strokeSmallButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeSmallButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeSmallButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeSmallButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_empty"]
+        [_strokeSmallButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_empty"]
                                          imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                             forState:UIControlStateNormal];
         [_strokeSmallButton setTintColor:self.tintColor];
@@ -295,7 +295,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         _strokeMediumButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeMediumButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeMediumButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeMediumButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_empty"]
+        [_strokeMediumButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_empty"]
                                           imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                              forState:UIControlStateNormal];
         [_strokeMediumButton setTintColor:self.tintColor];
@@ -312,7 +312,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
         _strokeLargeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_strokeLargeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
         [_strokeLargeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
-        [_strokeLargeButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_empty"]
+        [_strokeLargeButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_empty"]
                                          imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                             forState:UIControlStateNormal];
         [_strokeLargeButton setTintColor:self.tintColor];
@@ -363,7 +363,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 {
     if (_confirmButton == nil) {
         _confirmButton = [[UIButton alloc] init];
-        [_confirmButton setImage:[UIImage buk_imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
+        [_confirmButton setImage:[UIImage buk_photoEditorImageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
         [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmButton;
@@ -373,7 +373,7 @@ static const CGFloat kStrokeButtonBasedWidth = 36.0f;
 {
     if (_cancelButton == nil) {
         _cancelButton = [[UIButton alloc] init];
-        [_cancelButton setImage:[UIImage buk_imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
+        [_cancelButton setImage:[UIImage buk_photoEditorImageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;

@@ -13,7 +13,7 @@
 #import "BUKPhotoFilterView.h"
 #import "UIImage+Crop.h"
 #import "UIColor+Theme.h"
-#import "UIImage+buk_image.h"
+#import "UIImage+BUKPhotoEditViewController.h"
 
 #define SCREEN_FACTOR [UIScreen mainScreen].bounds.size.width / 414.0
 
@@ -357,7 +357,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_rotateButton) {
         _rotateButton = [[UIButton alloc] init];
-        [_rotateButton setImage:[[UIImage buk_imageNamed:@"qingquan_rotate_button"]
+        [_rotateButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_rotate_button"]
                                     imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                        forState:UIControlStateNormal];
         [_rotateButton setTintColor:self.tintColor];
@@ -370,7 +370,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_mosaicButton) {
         _mosaicButton = [[UIButton alloc] init];
-        [_mosaicButton setImage:[[UIImage buk_imageNamed:@"qingquan_mosaic_button"]
+        [_mosaicButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_mosaic_button"]
                                     imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                        forState:UIControlStateNormal];
         [_mosaicButton setTintColor:self.tintColor];
@@ -383,7 +383,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_clipButton) {
         _clipButton = [[UIButton alloc] init];
-        [_clipButton setImage:[[UIImage buk_imageNamed:@"qingquan_clip_button"]
+        [_clipButton setImage:[[UIImage buk_photoEditorImageNamed:@"qingquan_clip_button"]
                                   imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                      forState:UIControlStateNormal];
         [_clipButton setTintColor:self.tintColor];
@@ -396,7 +396,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (!_doneButton) {
         _doneButton = [[UIButton alloc] init];
-        [_doneButton setImage:[UIImage buk_imageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
+        [_doneButton setImage:[UIImage buk_photoEditorImageNamed:@"photo_edit_done"] forState:UIControlStateNormal];
         [_doneButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _doneButton;
@@ -406,7 +406,7 @@ static NSString *kPhotoViewObserverPath = @"image.imageOrientation";
 {
     if (_cancelButton == nil) {
         _cancelButton = [[UIButton alloc] init];
-        [_cancelButton setImage:[UIImage buk_imageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
+        [_cancelButton setImage:[UIImage buk_photoEditorImageNamed:@"qingquan_edit_cancel"] forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;

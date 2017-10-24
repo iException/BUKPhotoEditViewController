@@ -7,7 +7,7 @@
 //
 
 #import "BUKViewController.h"
-#import <BUKPhotoEditViewController.h>
+#import <BUKPhotoEditViewController/BUKPhotoEditViewController.h>
 
 
 @interface BUKViewController ()
